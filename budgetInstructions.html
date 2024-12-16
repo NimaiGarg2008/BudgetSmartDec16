@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="budgetInstructions.css">
+		<script src="script.js"></script>
+		<title>BudgetSmart Instructions</title>
+	</head>
+	<body>
+
+		<button class="playGame" onclick="goToNextPage('budgetSmart.html')">Start Game</button>
+
+		<h1 id = "preface"><u> Preface </u></h2>
+		<p id = "preface-text">
+			You are Alex, a young teen who lives in a neighborhood with your hardworking mom. When you start driving,
+			one day, your mom asks you to take on an important task: buy the week's groceries--but with a catch: you only
+			can spend your allowance, since your mom doesn't have enough.
+
+			Your mission is clear: Get the essentials for this week without going over the budget. Your mom has a list of
+			items she needs which you grab and put in your pocket. You'll have to figure out how to balance everything in
+			your shopping cart, while ensuring your mom is satisified.
+		</p>
+
+		<h1 id = "goal"> <u> Goal </u></h1>
+		<p id = "instruction-text">
+			You will be running some errands at a grocery store. In each session, you will be given a set, 
+			randomized budget, as well as a set, randomized list. Your goal is to get all the basic products
+			listed on the shopping list while not straying too far from the budget you've been given. <br></br> Along
+			with this, every item in the store has a "desirability" meter, and getting items with higher
+			desirability while keeping reasonably within the set budget will give you higher points.
+		</p>
+		
+		<h2 id = "controls"><u> Controls </u></h2>
+		<p id = "controls-text">
+			Each item is shown with two buttons below it - an "Add To Cart" button, and a "Remove" 
+			button. Use these to take or put back items. Every time you click one of these two buttons, the
+			remaining budget is adjusted accordingly.
+			<br></br>
+			Use left and right arrow keys in the "Store Items" section to toggle back and forth between various
+			items.			
+			<br></br>
+			At the bottom of the shopping page is a "Checkout" button. Click this when you are sure you have
+			met the budget requirements and maximized the amount of points you can recieve via item desirability.
+			If you over-exceed the budget or add items that aren't on the list, you will be asked to try again or
+			put some items back.
+			<br></br>
+			With those basics out of the way, it's time to start shopping smarter!
+		</p>
+		
+		<button class = "back" onclick="goToNextPage('index.html')">Back To Home</button>
+	</body>
+</html>

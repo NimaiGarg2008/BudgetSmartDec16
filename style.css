@@ -1,0 +1,106 @@
+body {
+	background-image: linear-gradient(to bottom, #005bb5, #87CEFA);
+	font-family: 'rockwell', sans-serif;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+#game-title {
+	color: #FFD700;
+	text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+	font-size: 60px;
+	font-weight: bold;
+	margin-top: 30px;
+}
+
+#icon {
+	display: block;
+	margin: 15px auto;
+	width: 120px;
+}
+
+#tagline {
+	font-size: 20px;
+	color: white;
+	font-style: italic;
+	margin-bottom: 20px;
+}
+
+.actions {
+	margin: 20px 0;
+}
+
+.instructions, .session1 {
+	cursor: pointer;
+	border: none;
+	border-radius: 10px;
+	padding: 12px 20px;
+	font-size: 20px;
+	font-family: 'Arial', sans-serif;
+	margin: 10px;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.session1 {
+	background-color: #FFD700;
+	color: #005bb5;
+}
+
+.instructions {
+	background-color: #F0FFFF;
+	color: #4682B4;
+}
+
+.instructions:hover, .session1:hover {
+	transform: scale(1.05);
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.feature-list {
+	background-color: rgba(255, 255, 255, 0.9);
+	border-radius: 12px;
+	padding: 20px;
+	margin: 30px auto;
+	width: 70%;
+	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+	color: #005bb5;
+	text-align: left;
+}
+
+.feature-list h2 {
+	font-size: 25px;
+	color: black;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.feature-list ul {
+	list-style: none;
+	padding: 0;
+}
+
+.feature-list li {
+	font-size: 18px;
+	margin: 8px 0;
+	text-align: center;
+}
+
+footer {
+	background-color: #003a70;
+	color: white;
+	padding: 15px 0;
+	margin-top: 50px;
+	box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.footer-content p {
+	font-size: 14px;
+	margin: 5px 0;
+}
+
+footer p:first-child {
+	font-weight: bold;
+	font-size: 16px;
+	color: #FFD700;
+}

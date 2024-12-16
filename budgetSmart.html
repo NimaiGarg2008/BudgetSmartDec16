@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset = "utf-8">
+		<link rel = "stylesheet" href = "budgetSmart.css">
+		<title>BudgetSmart</title>
+	</head>
+
+    <body>
+        <div class="topPanel">
+            <h1 id="budget-title">
+                Budget: <span id="budget-currency-symbol"></span><span id="budget"></span>
+            </h1>
+            <h1 id="budgetsmart-title">BudgetSmart</h1>
+            <h1 id="timer-title">Timer: <span id="timer">2:00</span></h1>
+        </div>
+
+        <div class="main-content">
+            <div class="row">
+                <div class="shoppingListBox">
+                    <br>
+                    <h2>Shopping List</h2>
+                    <div id="shopping-list-content"></div>
+                    <p id="shoppingList"></p>
+                </div>
+                <div class="storeBox">
+                    <br>
+                    
+                    <h2>Store Items</h2>
+                    <div id="storeItems"></div>
+                    <div class="store-items-container" id="store-items-container"></div>
+                    <div class="navigation-buttons">
+                        <button class="nav-button left" onclick="leftButton()">←</button>
+                        <button class="nav-button right" onclick="rightButton()">→</button>
+                    </div>
+		                <br>
+                  
+                  <select id="category-selector" onchange="switchToCategory(this)">
+                    <option value="Dairy"> Dairy </option>
+                    <option value="Meats"> Meats </option>
+                    <option value="Vegetables"> Vegetables </option>
+                    <option value="Fruits"> Fruits </option>
+                    <option value="Grains"> Grains </option>
+                    <option value="Pasta"> Pasta </option>
+                    <option value="Beverages"> Beverages </option>
+                  </select>
+                  
+                </div>
+                <div class="itemsInCartBox">
+                    <br>
+                    <h2>Items in Cart</h2>
+                    <p><center>
+                        <span class="item-name">Add something to your cart!</span>
+                    </center>
+                    </p>
+                </div>
+            </div>
+
+            <div class="second-row">
+                <div class="optionsBox">
+                    <br>
+                    <h2>Options</h2>
+                    <div class="option-row">
+                        <p>Amount</p>
+                        <div class="button-row-currency">
+                            <button id="usd-button" onclick="convertCurrency('USD')">USD</button>
+                            <button id="cad-button" onclick="convertCurrency('CAD')">CAD</button>
+                            <button id="eur-button" onclick="convertCurrency('EUR')">EUR</button>
+                        </div>			  
+                    </div>
+                    <div class="option-row">
+                        <p>Speed</p>
+                        <div class="button-row-speed">
+                            <button id="speed-1x" onclick="setSpeed('1x')">1x</button>
+                            <button id="speed-2x" onclick="setSpeed('2x')">2x</button>
+                            <button id="speed-3x" onclick="setSpeed('3x')">3x</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="desirabilityMeterBox">
+                    <br>
+                    <h2>Desirability</h2>
+                    <div id="desirability-box">
+                        <p id="item-name"></p>
+                        <p id="item-desirability"></p>
+                    </div>
+                </div>
+
+                <div class="otherBox">
+                    <br>
+                    <h2>Other</h2>
+                    <div class="other-buttons">
+                        <button class="how-to-play" 
+                                onclick="openNewTab()">How to Play</button>
+                        <button class="go-to-home" onclick="goToNextPage('index.html')">Go back to Home</button>
+                    </div>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <script src="budgetSmart.js"></script>
+    </body>
+</html>
