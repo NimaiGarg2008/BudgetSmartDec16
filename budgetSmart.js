@@ -154,6 +154,13 @@ function getCurrencySymbol(currency)
       }
 }
 
+// This function moves the user to the instructions tab, and clarifies that the timer WILL continue running when they are no longer on the page
+function openNewTab()
+{
+      alert("The timer will not stop while you're on the instructions tab!");
+      window.open("budgetInstructions.html", "_blank");  
+}
+
 function setSpeed(speed)
 {
       speedFactor = parseInt(speed); // Speed is either 1x, 2x, or 3x, so we parseInt it to get the value
@@ -198,6 +205,23 @@ function setSpeed(speed)
       {
             speedButton3.classList.add("active");
       }
+}
+
+// This is a standard timer-setting function in JavaScript, where the “, 1000” means that it will run once every 1000 milliseconds, or 1 second. Each second we will deduct the speed that the user wanted to use. When the remaining time reaches 0, we end the game due to time running out. Otherwise, we keep calling the update display function
+function startTimer()
+{
+      updateDisplay();
+      let timerInterval = setInterval(function ()
+      {
+            remainingTime -= speedFactor;
+            if (remainingTime <= 0)
+            {
+                  remainingTime = 0;
+                  clearInterval(timerInterval);
+                  endGame();
+            }
+            updateDisplay();
+      }, 1000);
 }
 
 function generateShoppingList(array)
@@ -337,12 +361,82 @@ function genBudgetAndDesirability(array)
             budget = budgetMin + Math.sqrt(randomNumber)*(budgetMax-budgetMin);
 
             // Taking the 1.8th power of the SAME random number, and this makes it slightly lower
-            targetDesirability = desMin + randomNumber ** 1.8 * (budgetMax-budgetMin);
+            targetDesirability = desMin + randomNumber ** 1.8 * (desMax-desMin);
 
             // Default currency is USD, so we use “$”, and then we update the budget value in the html. The target desirability is kept hidden to make sure that the user tries their best to maximize desirability
             budgetCurrencySymbol.textContent = "$";
             budgetElement.textContent = budget.toFixed(2);
       }
+}
+
+// This function randomizes every desirability and price value of each item in the possible items in the store, so that every time you play the game it is likely something will be different. The price and desirability are both adjusted together, so the values still make sense in respect to each other. The values can be adjusted up or down, up to 20% higher or lower
+function randomizePricesAndDesirability()
+{
+      const range = 0.2;
+      let change = 0;
+      for (let i = 0; i < items.length; i++)
+      {
+            change = (Math.random() * 2 * range) - range;
+            items[i].price += Number((items[i].price * change).toFixed(2));
+            items[i].desirability += Number((items[i].desirability * change).toFixed(1));
+      }
+}
+
+// This function adjusts the budget value to whatever currency was selected, and is called when a new currency is selected
+function updateBudget()
+{
+      let convertedBudget = budget * currencyRates[selectedCurrency];
+      budgetCurrencySymbol.textContent = getCurrencySymbol(selectedCurrency);
+      budgetElement.textContent = convertedBudget.toFixed(2);
+}
+
+// This function allows for the user to add to the cart of the specific item they want
+function addToCart()
+{
+      // Makes sure that we are on the correct index, defines an input field and a part of the HTML field in the middle of the top row which we will later empty
+      let amountInput = document.querySelector('.item-amount');
+      let item = items[Number(currentIndex)];
+      let quantityDisplay = document.querySelector('.quantity-display');
+      let quantity = Number(amountInput.value);
+
+      // Makes sure that the quantity is a valid amount (Must be a positive, whole number)
+      if (amountInput.value.length == 0|| quantity <= 0 || quantity%1 != 0)
+      {
+            alert("Please enter a valid quantity.");
+            return;
+      }
+
+      // Defines a couple variables: existing cart item is first undefined so if we can’t find a matching value it will not trigger the if statement
+      let finalDesirability = item.desirability * quantity;
+      let existingCartItem = undefined;
+      let category = item.category;
+
+      // If an existing cart item exists, it will assign that value to this variable 
+      for (let i = 0; i < cart.length; i++)
+      {
+            if (cart[i].name === item.displayName)
+            {
+                  existingCartItem = cart[i]; 
+                  break;
+            }
+      }
+
+      if (existingCartItem !== undefined)
+      {
+            // If an existing cart item exists, we will change the quantity and final desirability values. Other values will be the same even if the user buys more so we do not need to add them. We do this so the cart doesn’t have too many things and same things will stack
+            existingCartItem.quantity += quantity;
+            existingCartItem.desirability += finalDesirability;
+      }
+      else
+      {
+            // If an existing cart item doesn’t exist, then we make one, filling in the values
+            cart.push({ name: item.displayName, quantity: quantity, price: item.price, desirability: finalDesirability, category: category});
+      }
+
+      // Empties the quantity and input field, because it wouldn’t make sense to keep the input field across different items. Also calls the update cart function which will update the cart html to reflect the new addition to the cart
+      updateCart();
+      amountInput.value = "";
+      quantityDisplay.textContent = "";
 }
 
 function updateCart()
@@ -373,6 +467,126 @@ function updateCart()
       `;
 }
 
+// Removes an item at the index passed in. Cart.splice requires 2 integer values, x and y, and it removes y elements starting at index x
+function removeItem(index)
+{
+      cart.splice(index, 1);
+      updateCart();
+}
+
+function renderStoreItems()
+{
+      // Current index is the index that the user is looking at, which determines which item they are viewing. This makes sure to select and display the correct index
+      storeItemsContainer.innerHTML = "";
+      let item = items[currentIndex];
+
+      // This HTML provides the user with the name and price of the item they are looking at and provides a button they can click to add it to the cart
+      let storeItemHTML = `
+            <div class="store-item">
+                  <div class="item-content">
+                        <h3 class="item-name">` + item.name + `<span class="quantity-display"></span></h3>
+                        <p class="item-price" data-price="` + item.price + `">` + getCurrencySymbol(selectedCurrency) + (item.price*currencyRates[selectedCurrency]).toFixed(2) + `</p>
+                        <input type="number" class="item-amount" placeholder="Enter amount" min="1"></input>
+                        <button onclick = "addToCart()" class="add-to-cart">Add to Cart</button>
+                  </div>
+            </div>
+      `;
+
+      // This updates a box in the bottom row that displays the desirability of the current selected item and its name
+      document.getElementById("item-desirability").textContent = "Desirability: "+ item.desirability.toFixed(1);
+      document.getElementById("item-name").textContent = "Item: "+ item.name;
+
+      // Puts the generated html snippet into the webpage
+      storeItemsContainer.innerHTML = storeItemHTML;
+
+      let amountInput = document.querySelector('.item-amount');
+      let quantityDisplay = document.querySelector('.quantity-display');
+      
+      // This event listener updates some of the html if an input is given (it shows how much you are about to buy)
+      amountInput.addEventListener('input', function ()
+      {
+            let quantity = parseInt(amountInput.value);
+            if (amountInput.value < 1)
+            {
+                  quantityDisplay.textContent ="";
+            }
+            else
+            {
+                  quantityDisplay.textContent = " x" + quantity;
+            }
+      });
+}
+
+// These two functions move the index forward/backward by one, and wrapping around in the case that they try to go too far in one direction
+function leftButton()
+{
+      currentIndex = (currentIndex - 1 + items.length) % items.length;
+      renderStoreItems();
+}
+
+function rightButton()
+{
+      currentIndex = (currentIndex + 1) % items.length;
+      renderStoreItems();
+}
+
+// This defines a function that will display the timer. It makes sure that the timer is displayed as how one would expect it to be displayed as, with an extra 0 if the seconds value is below 10.
+function updateDisplay()
+{
+      let minutes = Math.floor(remainingTime / 60);
+      let seconds = remainingTime % 60;
+
+      if (seconds < 10)
+      {
+            timerDisplay.textContent = minutes + ":0" + seconds;
+      }
+      else
+      {
+            timerDisplay.textContent = minutes + ":" + seconds;
+      }
+}
+
+function switchToCategory(name)
+{
+      currentIndex = 0;
+      categoryName = name.value;
+
+      // Called when a category is selected from a dropdown menu, and it starts from the front and keeps scrolling items until it reaches the category the user wants
+      while (items[currentIndex].category != categoryName)
+      {
+            rightButton();
+      }
+      updateUI();
+}
+
+// This function makes sure the correct currency button is labeled as active (and styled as so) and then re-calls all the necessary functions which will refresh the html to use the currency currency symbol/conversion rate
+function updateUI() {
+  const buttons = [usdButton, cadButton, eurButton];
+  for (let i = 0; i < buttons.length; i++)
+  {
+        if (buttons[i].classList.contains('active'))
+        {
+              buttons[i].classList.remove('active');
+        }
+  }
+
+  if (selectedCurrency === 'USD')
+  {
+        usdButton.classList.add('active');
+  }
+  else if (selectedCurrency === 'CAD')
+  {
+        cadButton.classList.add('active');
+  }
+  else if (selectedCurrency === 'EUR')
+  {
+        eurButton.classList.add('active');
+  }
+  updateCart();
+  renderStoreItems();
+}
+
+// This function checks if the user's cart once clicked on the checkout button, if the cart matches the shoppingList or not.
 function badCart(cart, categories, shoppingList)
 {
       // Creates an empty array, which will be checked against the shopping list array
@@ -407,6 +621,7 @@ function badCart(cart, categories, shoppingList)
       return false;
 }
 
+// This function is for when the user clicks on checkout and provides the user the end result and context of how they did
 function checkout()
 {
       // Sets up some variables
@@ -463,178 +678,6 @@ function checkout()
       }
 }
 
-function removeItem(index)
-{
-      // Removes an item at the index passed in. Cart.splice requires 2 integer values, x and y, and it removes y elements starting at index x
-      cart.splice(index, 1);
-      updateCart();
-}
-
-function renderStoreItems()
-{
-      // Current index is the index that the user is looking at, which determines which item they are viewing. This makes sure to select and display the correct index
-      storeItemsContainer.innerHTML = "";
-      let item = items[currentIndex];
-
-      // This HTML provides the user with the name and price of the item they are looking at and provides a button they can click to add it to the cart
-      let storeItemHTML = `
-            <div class="store-item">
-                  <div class="item-content">
-                        <h3 class="item-name">` + item.name + `<span class="quantity-display"></span></h3>
-                        <p class="item-price" data-price="` + item.price + `">` + getCurrencySymbol(selectedCurrency) + (item.price*currencyRates[selectedCurrency]).toFixed(2) + `</p>
-                        <input type="number" class="item-amount" placeholder="Enter amount" min="1"></input>
-                        <button onclick = "addToCart()" class="add-to-cart">Add to Cart</button>
-                  </div>
-            </div>
-      `;
-
-      // This updates a box in the bottom row that displays the desirability of the current selected item and its name
-      document.getElementById("item-desirability").textContent = "Desirability: "+ item.desirability.toFixed(1);
-      document.getElementById("item-name").textContent = "Item: "+ item.name;
-
-      // Puts the generated html snippet into the webpage
-      storeItemsContainer.innerHTML = storeItemHTML;
-
-      let amountInput = document.querySelector('.item-amount');
-      let quantityDisplay = document.querySelector('.quantity-display');
-      
-      // This event listener updates some of the html if an input is given (it shows how much you are about to buy)
-      amountInput.addEventListener('input', function ()
-      {
-            let quantity = parseInt(amountInput.value);
-            if (amountInput.value < 1)
-            {
-                  quantityDisplay.textContent ="";
-            }
-            else
-            {
-                  quantityDisplay.textContent = " x" + quantity;
-            }
-      });
-}
-
-
-function switchToCategory(name)
-{
-      currentIndex = 0;
-      categoryName = name.value;
-
-      // Called when a category is selected from a dropdown menu, and it starts from the front and keeps scrolling items until it reaches the category the user wants
-      while (items[currentIndex].category != categoryName)
-      {
-            rightButton();
-      }
-      updateUI();
-}
-
-// This function makes sure the correct currency button is labeled as active (and styled as so) and then re-calls all the necessary functions which will refresh the html to use the currency currency symbol/conversion rate
-function updateUI() {
-      const buttons = [usdButton, cadButton, eurButton];
-      for (let i = 0; i < buttons.length; i++)
-      {
-            if (buttons[i].classList.contains('active'))
-            {
-                  buttons[i].classList.remove('active');
-            }
-      }
-
-      if (selectedCurrency === 'USD')
-      {
-            usdButton.classList.add('active');
-      }
-      else if (selectedCurrency === 'CAD')
-      {
-            cadButton.classList.add('active');
-      }
-      else if (selectedCurrency === 'EUR')
-      {
-            eurButton.classList.add('active');
-      }
-      updateCart();
-      renderStoreItems();
-}
-
-function addToCart()
-{
-      // Makes sure that we are on the correct index, defines an input field and a part of the HTML field in the middle of the top row which we will later empty
-      let amountInput = document.querySelector('.item-amount');
-      let item = items[Number(currentIndex)];
-      let quantityDisplay = document.querySelector('.quantity-display');
-      let quantity = Number(amountInput.value);
-
-      // Makes sure that the quantity is a valid amount (Must be a positive, whole number)
-      if (amountInput.value.length == 0|| quantity <= 0 || quantity%1 != 0)
-      {
-            alert("Please enter a valid quantity.");
-            return;
-      }
-
-      // Defines a couple variables: existing cart item is first undefined so if we can’t find a matching value it will not trigger the if statement
-      let finalDesirability = item.desirability * quantity;
-      let existingCartItem = undefined;
-      let category = item.category;
-
-      // If an existing cart item exists, it will assign that value to this variable 
-      for (let i = 0; i < cart.length; i++)
-      {
-            if (cart[i].name === item.displayName)
-            {
-                  existingCartItem = cart[i]; 
-                  break;
-            }
-      }
-
-      if (existingCartItem !== undefined)
-      {
-            // If an existing cart item exists, we will change the quantity and final desirability values. Other values will be the same even if the user buys more so we do not need to add them. We do this so the cart doesn’t have too many things and same things will stack
-            existingCartItem.quantity += quantity;
-            existingCartItem.desirability += finalDesirability;
-      }
-      else
-      {
-            // If an existing cart item doesn’t exist, then we make one, filling in the values
-            cart.push({ name: item.displayName, quantity: quantity, price: item.price, desirability: finalDesirability, category: category});
-      }
-
-      // Empties the quantity and input field, because it wouldn’t make sense to keep the input field across different items. Also calls the update cart function which will update the cart html to reflect the new addition to the cart
-      updateCart();
-      amountInput.value = "";
-      quantityDisplay.textContent = "";
-}
-
-// This defines a function that will display the timer. It makes sure that the timer is displayed as how one would expect it to be displayed as, with an extra 0 if the seconds value is below 10.
-function updateDisplay ()
-{
-      let minutes = Math.floor(remainingTime / 60);
-      let seconds = remainingTime % 60;
-
-      if (seconds < 10)
-      {
-            timerDisplay.textContent = minutes + ":0" + seconds;
-      }
-      else
-      {
-            timerDisplay.textContent = minutes + ":" + seconds;
-      }
-}
-
-// This is a standard timer-setting function in JavaScript, where the “, 1000” means that it will run once every 1000 milliseconds, or 1 second. Each second we will deduct the speed that the user wanted to use. When the remaining time reaches 0, we end the game due to time running out. Otherwise, we keep calling the update display function
-function startTimer()
-{
-      updateDisplay();
-      let timerInterval = setInterval(function ()
-      {
-            remainingTime -= speedFactor;
-            if (remainingTime <= 0)
-            {
-                  remainingTime = 0;
-                  clearInterval(timerInterval);
-                  endGame();
-            }
-            updateDisplay();
-      }, 1000);
-}
-
 // This function tells the user that the time is up, moves them to a different screen, and just in case disables all the other buttons so they can manually navigate to a new page in the event of an error
 function endGame()
 {
@@ -653,52 +696,12 @@ function endGame()
             inputs[i].disabled = true;
       }
 
-
       let selector = document.querySelector("#category-selector");
       selector.disabled = true;
 }
 
-// These two functions move the index forward/backward by one, and wrapping around in the case that they try to go too far in one direction
-function leftButton()
-{
-      currentIndex = (currentIndex - 1 + items.length) % items.length;
-      renderStoreItems();
-}
-
-function rightButton ()
-{
-      currentIndex = (currentIndex + 1) % items.length;
-      renderStoreItems();
-}
-
-// This function adjusts the budget value to whatever currency was selected, and is called when a new currency is selected
-function updateBudget()
-{
-      let convertedBudget = budget * currencyRates[selectedCurrency];
-      budgetCurrencySymbol.textContent = getCurrencySymbol(selectedCurrency);
-      budgetElement.textContent = convertedBudget.toFixed(2);
-}
-
-// This function randomizes every desirability and price value of each item in the possible items in the store, so that every time you play the game it is likely something will be different. The price and desirability are both adjusted together, so the values still make sense in respect to each other. The values can be adjusted up or down, up to 20% higher or lower
-function randomizePricesAndDesirability()
-{
-      const range = 0.2;
-      let change = 0;
-      for (let i = 0; i < items.length; i++)
-      {
-            change = (Math.random() * 2 * range) - range;
-            items[i].price += Number((items[i].price * change).toFixed(2));
-            items[i].desirability += Number((items[i].desirability * change).toFixed(1));
-      }
-}
-
-// This function moves the user to the instructions tab, and clarifies that the timer WILL continue running when they are no longer on the page
-function openNewTab()
-{
-      alert("The timer will not stop while you're on the instructions tab!");
-      window.open("budgetInstructions.html", "_blank");  
-}
-
+/* This is the function that is called as soon as the user enters the page. This function loads all the content within the "budgetSmart.html" 
+   page and runs the code below */
 document.addEventListener("DOMContentLoaded", function ()
 {
       randomizePricesAndDesirability();
