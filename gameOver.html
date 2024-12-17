@@ -1,8 +1,11 @@
+<!-- This is the end screen the user will be greeted with if they fail to win the game on the "budgetSmart.html"
+page."-->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="gameOverWin.css">
+		<!-- Links the HTML page to the JavaScript file that commands page navigation -->
 		<script src="script.js"></script>
 		<title>Game Over</title>
 	</head>
@@ -11,6 +14,8 @@
         <div class="container">
             <h1 id="game-title">Game Over</h1>
             <h2 id="description">You were not able to check out.</h2>
+
+			<!-- Takes the user back to the "index.html" page -->
             <div class="actions">
                 <button class="instructions" onclick="goToNextPage('index.html')">Go to Home</button>
             </div>
