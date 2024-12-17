@@ -23,7 +23,8 @@ let totalDesirability = 0;
 let currencyRates = { USD: 1, CAD: 1.42, EUR: 0.95 };
 let timerInterval;
 
-// Our list of items that the user can buy with various information about each item. Items include in the range of Dairy, Meats, Vegetables, Fruits, Grains, Pasta, Beverages.
+// Our list of items that the user can buy with various information about each item. Items include in the range of 
+//Dairy, Meats, Vegetables, Fruits, Grains, Pasta, Beverages.
 let items = [
       // Dairy
       { name: "Golden Farms Unsalted Butter - Organic (2 sticks)", displayName: "Golden Farms Unsalted Butter - Organic", category: "Dairy", price: 1.00, desirability: 0.6 },
@@ -112,7 +113,8 @@ let items = [
       { name: "Fresh Brewed Coffee Beans (8 oz)", displayName: "Fresh Brewed Coffee Beans", category: "Beverages", price: 5.50, desirability: 2.3}
 ];
 
-// Our list of the different categories the items can be in (Dairy, Meats, Vegetables, Fruits, Grains, Pasta, Beverages)
+// Our list of the different categories the items can be in (Dairy, Meats, Vegetables, Fruits, Grains, Pasta, 
+//Beverages)
 let categories = ["Dairy", "Meats", "Vegetables", "Fruits", "Grains", "Pasta", "Beverages"];
 
 // Empty values that will be assigned a semi-random value when starting the game
@@ -125,8 +127,8 @@ function goToNextPage(nextPage)
       location.replace(nextPage);
 }
 
-// This function changes the currency (between USD, CAD, and EUR), and then updates all the necessary HTMLs that include
-// monetary values which will change due to this change in currency
+// This function changes the currency (between USD, CAD, and EUR), and then updates all the necessary HTMLs that 
+//include monetary values which will change due to this change in currency
 function convertCurrency(currency)
 {
       selectedCurrency = currency.toString();
@@ -136,7 +138,8 @@ function convertCurrency(currency)
       renderStoreItems();
 }
 
-// When the currency is changed, we call this function to get the correct currency symbol for whenever we display a currency symbol in the changing HTML
+// When the currency is changed, we call this function to get the correct currency symbol for whenever we display a 
+//currency symbol in the changing HTML
 function getCurrencySymbol(currency)
 {
       let symbols = {
@@ -155,7 +158,8 @@ function getCurrencySymbol(currency)
       }
 }
 
-// This function moves the user to the instructions tab, and clarifies that the timer WILL continue running when they are no longer on the page
+// This function moves the user to the instructions tab, and clarifies that the timer WILL continue running when they  
+//are no longer on the page
 function openNewTab()
 {
       alert("The timer will not stop while you're on the instructions tab!");
@@ -180,7 +184,8 @@ function setSpeed(speed)
       alert("You have chosen a speed of " + speed + ", meaning each second the timer will increment by " + speed + ". Click the OK button when you are ready.");
       startTimer();
 
-      // Gives the user time to get ready, and when they are ready, they will close the alert field. After this, the timer will start
+      // Gives the user time to get ready, and when they are ready, they will close the alert field. After this, 
+	  //the timer will start
       let speedButton1 = document.querySelector("#speed-1x");
       let speedButton2 = document.querySelector("#speed-2x");
       let speedButton3 = document.querySelector("#speed-3x");
@@ -194,7 +199,8 @@ function setSpeed(speed)
       speedButton3.classList.remove("active");
 
       // Disables all the buttons that modify speed, so the speed can not be changed mid-game. After this, it marks
-      // the speed button that was selected as “active”, which gives it a different styling so the user knows which one they chose
+      // the speed button that was selected as “active”, which gives it a different styling so the user knows which 
+	  //one they chose
       if (speedFactor == 1)
       {
             speedButton1.classList.add("active");
@@ -328,7 +334,8 @@ function genBudgetAndDesirability(array)
                   }
             }
 
-            // When we hit a new category, all the values are inserted into the array and we start again with the first values
+            // When we hit a new category, all the values are inserted into the array and we start again 
+			//with the first values
             if (array[i].category != category)
             {
                   category = array[i].category;
@@ -361,13 +368,15 @@ function genBudgetAndDesirability(array)
       // Makes sure the while loop kicks in
       let randomNumber = 0; 
 
-      // This while loop makes sure that the multiplier for budget is at least 0.25 higher than the multiplier for the desirability to make both goals achievable
+      // This while loop makes sure that the multiplier for budget is at least 0.25 higher than the multiplier 
+	  //for the desirability to make both goals achievable
       while (Math.sqrt(randomNumber) - randomNumber **1.8 <= 0.25)
       {
             // Multiplies the random number by 0.8 to make sure it is not too high, so it isn’t too easy
             randomNumber = Math.random()*0.8;
 
-            // Square rooting the decimal makes it a larger number, and then we add that portion of “extra budget” to the minimum
+            // Square rooting the decimal makes it a larger number, and then we add that portion of “extra budget” 
+			//to the minimum
             budget = budgetMin + Math.sqrt(randomNumber)*(budgetMax-budgetMin);
 
             // Taking the 1.8th power of the SAME random number, and this makes it slightly lower
@@ -447,7 +456,8 @@ function addToCart()
       else
       {
             // If an existing cart item doesn’t exist, then we make one, filling in the values
-            cart.push({ name: item.displayName, quantity: quantity, price: item.price, desirability: finalDesirability, category: category});
+            cart.push({ name: item.displayName, quantity: quantity, price: item.price, desirability: finalDesirability,
+			category: category});
       }
 
       // Empties the quantity and input field, because it wouldn’t make sense to keep the input field across different items. Also
@@ -472,7 +482,10 @@ function updateCart()
             let convertedPrice = (cart[i].price * currencyRates[selectedCurrency]).toFixed(2) * cart[i].quantity;
             totalPrice += convertedPrice;
             desirability += cart[i].desirability ;
-            cartList += "<p> <div class = 'price-div'><span class='cart-item-name'> " + cart[i].name + " x" + cart[i].quantity + "</span> <span class='cart-item-price'>" + getCurrencySymbol(selectedCurrency) + convertedPrice.toFixed(2) + "</span> </div> <button class='remove-item' onclick = 'removeItem(" + i + ")'> Remove </button> </p>";
+            cartList += "<p> <div class = 'price-div'><span class='cart-item-name'> " + cart[i].name + " x" + 
+			cart[i].quantity + "</span> <span class='cart-item-price'>" + getCurrencySymbol(selectedCurrency) + 
+			convertedPrice.toFixed(2) + 
+			"</span> </div> <button class='remove-item' onclick = 'removeItem(" + i + ")'> Remove </button> </p>";
       }
 
       // Round the total price so it looks like a money value
@@ -482,7 +495,10 @@ function updateCart()
       cartBox.innerHTML = `
             <h2>Items in Cart</h2>
             ` + cartList + `
-            <div class = "price-div"> <p><strong>Total Price:&nbsp;</strong> <span id = "total-price-symbol">` + getCurrencySymbol(selectedCurrency) + `</span> <span id="total-price"> ` + totalPrice + `</span></div> <span id="total-desirability"><strong>Total Desirability:&nbsp;</strong>` + desirability.toFixed(1) + `</span> </p>
+            <div class = "price-div"> <p><strong>Total Price:&nbsp;</strong> <span id = "total-price-symbol">` 
+			+ getCurrencySymbol(selectedCurrency) + `</span> <span id="total-price"> ` + totalPrice + 
+			`</span></div> <span id="total-desirability"><strong>Total Desirability:&nbsp;</strong>` + 
+			desirability.toFixed(1) + `</span> </p>
             <button id="checkout-button" onclick = "checkout()"> Checkout </button>
       `;
 }
@@ -506,7 +522,8 @@ function renderStoreItems()
             <div class="store-item">
                   <div class="item-content">
                         <h3 class="item-name">` + item.name + `<span class="quantity-display"></span></h3>
-                        <p class="item-price" data-price="` + item.price + `">` + getCurrencySymbol(selectedCurrency) + (item.price*currencyRates[selectedCurrency]).toFixed(2) + `</p>
+                        <p class="item-price" data-price="` + item.price + `">` + getCurrencySymbol(selectedCurrency) + 
+						(item.price*currencyRates[selectedCurrency]).toFixed(2) + `</p>
                         <input type="number" class="item-amount" placeholder="Enter amount" min="1"></input>
                         <button onclick = "addToCart()" class="add-to-cart">Add to Cart</button>
                   </div>
@@ -573,7 +590,8 @@ function switchToCategory(name)
       currentIndex = 0;
       categoryName = name.value;
 
-      // Called when a category is selected from a dropdown menu, and it starts from the front and keeps scrolling items until it reaches the category the user wants
+      // Called when a category is selected from a dropdown menu, and it starts from the front and keeps 
+	  //scrolling items until it reaches the category the user wants
       while (items[currentIndex].category != categoryName)
       {
             rightButton();
@@ -676,7 +694,8 @@ function checkout()
       // Finally, check to make sure the user has enough desirability. If they didn’t, they are told their desirability and what they were supposed to get
       else if (targetDesirability.toFixed(1) > totalDesirability.toFixed(1))
       {
-            alert("You failed to meet your mom's desirability requirement! It was " + targetDesirability.toFixed(1) + " and you only had " +  totalDesirability.toFixed(1) + " desirability.");
+            alert("You failed to meet your mom's desirability requirement! It was " + targetDesirability.toFixed(1) + 
+			" and you only had " +  totalDesirability.toFixed(1) + " desirability.");
             location.replace('gameOver.html');
       }
       else
@@ -684,7 +703,8 @@ function checkout()
             alert("Congrats! You are within budget and have bought what you were instructed to buy.");
 
             // Tells them how much they beat the target by (the more the better)
-            alert("Your total desirability in the end was: " + totalDesirability.toFixed(1) + ". For reference, the target desirability was " + targetDesirability.toFixed(1) + ".");
+            alert("Your total desirability in the end was: " + totalDesirability.toFixed(1) + 
+			". For reference, the target desirability was " + targetDesirability.toFixed(1) + ".");
             
             location.replace('gameWin.html');
 
@@ -734,17 +754,22 @@ document.addEventListener("DOMContentLoaded", function ()
       updateUI();
       // As soon as the content is loaded, we set the budget and add whatever HTML we can with this
 
-      //This HTML shows the cart as initially empty, and loads the checkout button as well as a 0 total price current desirability
+      //This HTML shows the cart as initially empty, and loads the checkout button as well as a 0 
+	  //total price current desirability
       cartBox.innerHTML = `
             <h2>Items in Cart</h2>
-            <div class = "price-div"> <p><strong>Total Price:&nbsp;</strong> <span id = "total-price-symbol">` + getCurrencySymbol(selectedCurrency) + `</span> <span id="total-price"> ` + totalPrice + `</span></div> <span id="total-desirability"><strong>Total Desirability:&nbsp;</strong>` + totalDesirability.toFixed(1) + `</span> </p>
+            <div class = "price-div"> <p><strong>Total Price:&nbsp;</strong> <span id = "total-price-symbol">` 
+			+ getCurrencySymbol(selectedCurrency) + `</span> <span id="total-price"> ` + totalPrice + 
+			`</span></div> <span id="total-desirability"><strong>Total Desirability:&nbsp;</strong>` + 
+			totalDesirability.toFixed(1) + `</span> </p>
             <button id="checkout-button" onclick = "checkout()"> Checkout </button>
       `;
       // &nbsp; = non-breaking space
 
       document.querySelector("#usd-button").classList.add("active");
 
-      // Disables all inputs, selectors, and buttons EXCEPT the speed buttons, which one must be clicked in order to properly start the game.
+      // Disables all inputs, selectors, and buttons EXCEPT the speed buttons, which one must be clicked in 
+	  //order to properly start the game.
       let buttons = document.querySelectorAll("button");
 
       for (let i = 0; i < buttons.length; i++)
