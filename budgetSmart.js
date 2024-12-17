@@ -10,7 +10,7 @@ const usdButton = document.getElementById("usd-button");
 const cadButton = document.getElementById("cad-button");
 const eurButton = document.getElementById("eur-button");
 
-//Defined to be used/changed in functions and overall for game usage
+// Defined to be used/changed in functions and overall for game usage
 let totalPrice = 0;
 let currentIndex = 0;
 let targetDesirability = 0;
@@ -112,7 +112,7 @@ let items = [
       { name: "Fresh Brewed Coffee Beans (8 oz)", displayName: "Fresh Brewed Coffee Beans", category: "Beverages", price: 5.50, desirability: 2.3}
 ];
 
-// Our list of the different categories the items can be in
+// Our list of the different categories the items can be in (Dairy, Meats, Vegetables, Fruits, Grains, Pasta, Beverages)
 let categories = ["Dairy", "Meats", "Vegetables", "Fruits", "Grains", "Pasta", "Beverages"];
 
 // Empty values that will be assigned a semi-random value when starting the game
@@ -125,7 +125,7 @@ function goToNextPage(nextPage)
       location.replace(nextPage);
 }
 
-// This function changes the currency(between USD, CAD, and EUR), and then updates all the necessary htmls that include monetary values which will change due to this change in currency
+// This function changes the currency (between USD, CAD, and EUR), and then updates all the necessary HTMLs that include monetary values which will change due to this change in currency
 function convertCurrency(currency)
 {
       selectedCurrency = currency.toString();
@@ -436,7 +436,7 @@ function checkout()
       // Finally, check to make sure the user has enough desirability. If they didn’t, they are told their desirability and what they were supposed to get
       else if (targetDesirability.toFixed(1) > totalDesirability.toFixed(1))
       {
-            alert("You failed to meet your mom's desirability requirement! It was " + targetDesirability.toFixed(1) + "and you only had " +  totalDesirability.toFixed(1) + "desirability.");
+            alert("You failed to meet your mom's desirability requirement! It was " + targetDesirability.toFixed(1) + " and you only had " +  totalDesirability.toFixed(1) + " desirability.");
             location.replace('gameOver.html');
       }
       else
@@ -444,7 +444,7 @@ function checkout()
             alert("Congrats! You are within budget and have bought what you were instructed to buy.");
 
             // Tells them how much they beat the target by (the more the better)
-            alert("Your total desirability in the end was: " + totalDesirability.toFixed(1) + ". For reference, the target desirability was “ + targetDesirability.toFixed(1)" + ".");
+            alert("Your total desirability in the end was: " + totalDesirability.toFixed(1) + ". For reference, the target desirability was " + targetDesirability.toFixed(1) + ".");
             
             location.replace('gameWin.html');
 
@@ -527,7 +527,7 @@ function switchToCategory(name)
       updateUI();
 }
 
-// This function makes sure the correct currency button is labelled as active(and styled as so) and then re-calls all the necessary functions which will refresh the html to use the currency currency symbol/conversion rate
+// This function makes sure the correct currency button is labeled as active (and styled as so) and then re-calls all the necessary functions which will refresh the html to use the currency currency symbol/conversion rate
 function updateUI() {
       const buttons = [usdButton, cadButton, eurButton];
       for (let i = 0; i < buttons.length; i++)
@@ -562,7 +562,7 @@ function addToCart()
       let quantityDisplay = document.querySelector('.quantity-display');
       let quantity = Number(amountInput.value);
 
-      // Makes sure that the quantity is a valid amount(Must be a positive, whole number)
+      // Makes sure that the quantity is a valid amount (Must be a positive, whole number)
       if (amountInput.value.length == 0|| quantity <= 0 || quantity%1 != 0)
       {
             alert("Please enter a valid quantity.");
@@ -647,7 +647,6 @@ function endGame()
             buttons[i].disabled = true;
       }
 
-
       let inputs = document.querySelectorAll("input");
       for (let i = 0; i < inputs.length; i++)
       {
@@ -707,7 +706,8 @@ document.addEventListener("DOMContentLoaded", function ()
       updateUI();
       // As soon as the content is loaded, we set the budget and add whatever HTML we can with this
 
-      // This HTML shows the cart as initially empty, and loads the checkout button as well as a 0 total price and 0 current desirability
+      /* This HTML shows the cart as initially empty, and loads the checkout button as well as a 0 total price and 0 current desirability
+         &nbsp; = non-breaking space */
       cartBox.innerHTML = `
             <h2>Items in Cart</h2>
             <div class = "price-div"> <p><strong>Total Price:&nbsp;</strong> <span id = "total-price-symbol">` + getCurrencySymbol(selectedCurrency) + `</span> <span id="total-price"> ` + totalPrice + `</span></div> <span id="total-desirability"><strong>Total Desirability:&nbsp;</strong>` + totalDesirability.toFixed(1) + `</span> </p>
