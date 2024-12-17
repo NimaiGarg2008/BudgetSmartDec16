@@ -1,8 +1,10 @@
+<!-- This is the end screen the user will be greeted with if they win the game on the "budgetSmart.html" page."-->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="gameOverWin.css">
+		<!-- Links the HTML page to the JavaScript file that commands page navigation -->
 		<script src="script.js"></script>
 		<title>Game Won</title>
 	</head>
@@ -11,6 +13,7 @@
         <div class="container">
             <h1 id="game-title">You won the game!</h1>
             <h2 id="description">You were able to checkout on time with the correct items</h2>
+			<!-- Takes the user back to the "index.html" page -->			
             <div class="actions">
                 <button class="instructions" onclick="goToNextPage('index.html')">Go to Home</button>
             </div>
