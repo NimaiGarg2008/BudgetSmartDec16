@@ -125,7 +125,8 @@ function goToNextPage(nextPage)
       location.replace(nextPage);
 }
 
-// This function changes the currency (between USD, CAD, and EUR), and then updates all the necessary HTMLs that include monetary values which will change due to this change in currency
+// This function changes the currency (between USD, CAD, and EUR), and then updates all the necessary HTMLs that include
+// monetary values which will change due to this change in currency
 function convertCurrency(currency)
 {
       selectedCurrency = currency.toString();
@@ -192,7 +193,8 @@ function setSpeed(speed)
       speedButton2.classList.remove("active");
       speedButton3.classList.remove("active");
 
-      // Disables all the buttons that modify speed, so the speed can not be changed mid-game. After this, it marks the speed button that was selected as “active”, which gives it a different styling so the user knows which one they chose
+      // Disables all the buttons that modify speed, so the speed can not be changed mid-game. After this, it marks
+      // the speed button that was selected as “active”, which gives it a different styling so the user knows which one they chose
       if (speedFactor == 1)
       {
             speedButton1.classList.add("active");
@@ -207,7 +209,9 @@ function setSpeed(speed)
       }
 }
 
-// This is a standard timer-setting function in JavaScript, where the “, 1000” means that it will run once every 1000 milliseconds, or 1 second. Each second we will deduct the speed that the user wanted to use. When the remaining time reaches 0, we end the game due to time running out. Otherwise, we keep calling the update display function
+// This is a standard timer-setting function in JavaScript, where the “, 1000” means that it will run once every 1000 milliseconds, or 1 second.
+// Each second we will deduct the speed that the user wanted to use. When the remaining time reaches 0, we end the game due to time running out.
+// Otherwise, we keep calling the update display function
 function startTimer()
 {
       updateDisplay();
@@ -231,7 +235,9 @@ function generateShoppingList(array)
       let category = "";
       shoppingList = [];
 
-      // For every item in the array with a matching category as the current category(this makes sure that the count is split by category), there is a 13/array length chance for another item to be added to the shopping list, and this makes the average amount of items in the shopping list 13 no matter the length of the array, as long as the array is at least of length 13
+      // For every item in the array with a matching category as the current category(this makes sure that the count is split by category),
+      // there is a 13/array length chance for another item to be added to the shopping list, and this makes the average amount of items in the
+      // shopping list 13 no matter the length of the array, as long as the array is at least of length 13
       for (let i = 0; i < array.length; i++)
       {
             // If the specific item's category matches the category variable
@@ -246,7 +252,8 @@ function generateShoppingList(array)
             // If the specific item's category does not match the category variable
             if (array[i].category != category)
             {
-                  // When we have moved on to the next category, a new index will be created in the shopping list array, and there will still be the chance of a new item being added
+                  // When we have moved on to the next category, a new index will be created in the shopping list array, 
+                  // and there will still be the chance of a new item being added
                   category = array[i].category
                   shoppingList[shoppingList.length] = 0;
                   if (Math.random() < (13/array.length))
@@ -260,14 +267,16 @@ function generateShoppingList(array)
       let totalItems = 0;
       let shoppingListContent = "<h3>Your shopping list consists of:</h3><div class='shopping-list-container'>";
 
-      // For every index of the shopping list, a new line will be added to the html with information about how much they need to buy, also keeps track of the total items in the shopping list
+      // For every index of the shopping list, a new line will be added to the html with information about how much they need to buy,
+      // also keeps track of the total items in the shopping list
       for (let i = 0; i < categories.length; i++)
       {
             shoppingListContent += "<p>" + categories[i] + ": " + shoppingList[i] + "</p>";
             totalItems += shoppingList[i]; 
       }
 
-      // Adds the finishing touch to the html, inserts the html, and then calls the next function while passing the same array through, to make sure we are using the same array.
+      // Adds the finishing touch to the html, inserts the html, and then calls the next function while passing the same array through,
+      // to make sure we are using the same array.
       shoppingListContent += "</div><p>Total items: " + totalItems + "</p>";
       document.getElementById("shopping-list-content").innerHTML = shoppingListContent;
       genBudgetAndDesirability(array);
@@ -294,7 +303,8 @@ function genBudgetAndDesirability(array)
 
       for (let i = 0; i < array.length; i++)
       {
-            // The same category checking logic is used to make sure we split the values by category. Then, if the desirability/price is above the max/below the min, then we update the max/min of said value
+            // The same category checking logic is used to make sure we split the values by category. Then,
+            // if the desirability/price is above the max/below the min, then we update the max/min of said value
             if (array[i].category == category)
             {
                   if (array[i].price < currentMin)
@@ -363,13 +373,16 @@ function genBudgetAndDesirability(array)
             // Taking the 1.8th power of the SAME random number, and this makes it slightly lower
             targetDesirability = desMin + randomNumber ** 1.8 * (desMax-desMin);
 
-            // Default currency is USD, so we use “$”, and then we update the budget value in the html. The target desirability is kept hidden to make sure that the user tries their best to maximize desirability
+            // Default currency is USD, so we use “$”, and then we update the budget value in the html. The
+            // target desirability is kept hidden to make sure that the user tries their best to maximize desirability
             budgetCurrencySymbol.textContent = "$";
             budgetElement.textContent = budget.toFixed(2);
       }
 }
 
-// This function randomizes every desirability and price value of each item in the possible items in the store, so that every time you play the game it is likely something will be different. The price and desirability are both adjusted together, so the values still make sense in respect to each other. The values can be adjusted up or down, up to 20% higher or lower
+// This function randomizes every desirability and price value of each item in the possible items in the store, so
+// that every time you play the game it is likely something will be different. The price and desirability are both adjusted together,
+// so the values still make sense in respect to each other. The values can be adjusted up or down, up to 20% higher or lower.
 function randomizePricesAndDesirability()
 {
       const range = 0.2;
@@ -393,7 +406,8 @@ function updateBudget()
 // This function allows for the user to add to the cart of the specific item they want
 function addToCart()
 {
-      // Makes sure that we are on the correct index, defines an input field and a part of the HTML field in the middle of the top row which we will later empty
+      // Makes sure that we are on the correct index, defines an input field and a part of the HTML
+      // field in the middle of the top row which we will later empty
       let amountInput = document.querySelector('.item-amount');
       let item = items[Number(currentIndex)];
       let quantityDisplay = document.querySelector('.quantity-display');
@@ -406,7 +420,8 @@ function addToCart()
             return;
       }
 
-      // Defines a couple variables: existing cart item is first undefined so if we can’t find a matching value it will not trigger the if statement
+      // Defines a couple variables: existing cart item is first undefined so if we can’t find a
+      // matching value it will not trigger the if statement
       let finalDesirability = item.desirability * quantity;
       let existingCartItem = undefined;
       let category = item.category;
@@ -423,7 +438,9 @@ function addToCart()
 
       if (existingCartItem !== undefined)
       {
-            // If an existing cart item exists, we will change the quantity and final desirability values. Other values will be the same even if the user buys more so we do not need to add them. We do this so the cart doesn’t have too many things and same things will stack
+            // If an existing cart item exists, we will change the quantity and final desirability values.
+            // Other values will be the same even if the user buys more so we do not need to add them. We do this so
+            // the cart doesn’t have too many things and same things will stack
             existingCartItem.quantity += quantity;
             existingCartItem.desirability += finalDesirability;
       }
@@ -433,7 +450,8 @@ function addToCart()
             cart.push({ name: item.displayName, quantity: quantity, price: item.price, desirability: finalDesirability, category: category});
       }
 
-      // Empties the quantity and input field, because it wouldn’t make sense to keep the input field across different items. Also calls the update cart function which will update the cart html to reflect the new addition to the cart
+      // Empties the quantity and input field, because it wouldn’t make sense to keep the input field across different items. Also
+      // calls the update cart function which will update the cart html to reflect the new addition to the cart
       updateCart();
       amountInput.value = "";
       quantityDisplay.textContent = "";
@@ -446,7 +464,9 @@ function updateCart()
       let totalPrice = 0;
       let desirability = 0;
 
-      // For every element in the “cart” object array(which is an array of what the user has put in their cart/plans to buy), we add the price of it (converted to whatever currency has been selected), and the desirability of it. Finally, we update the html to include each item in the cart
+      // For every element in the “cart” object array(which is an array of what the user has put in their cart/plans to buy),
+      // we add the price of it (converted to whatever currency has been selected), and the desirability of it.
+      // Finally, we update the html to include each item in the cart
       for (let i = 0; i < cart.length; i++)
       {
             let convertedPrice = (cart[i].price * currencyRates[selectedCurrency]).toFixed(2) * cart[i].quantity;
@@ -476,7 +496,8 @@ function removeItem(index)
 
 function renderStoreItems()
 {
-      // Current index is the index that the user is looking at, which determines which item they are viewing. This makes sure to select and display the correct index
+      // Current index is the index that the user is looking at, which determines which item they are viewing.
+      // This makes sure to select and display the correct index
       storeItemsContainer.innerHTML = "";
       let item = items[currentIndex];
 
@@ -530,7 +551,8 @@ function rightButton()
       renderStoreItems();
 }
 
-// This defines a function that will display the timer. It makes sure that the timer is displayed as how one would expect it to be displayed as, with an extra 0 if the seconds value is below 10.
+// This defines a function that will display the timer. It makes sure that the timer is displayed as
+// how one would expect it to be displayed as, with an extra 0 if the seconds value is below 10.
 function updateDisplay()
 {
       let minutes = Math.floor(remainingTime / 60);
@@ -559,7 +581,8 @@ function switchToCategory(name)
       updateUI();
 }
 
-// This function makes sure the correct currency button is labeled as active (and styled as so) and then re-calls all the necessary functions which will refresh the html to use the currency currency symbol/conversion rate
+// This function makes sure the correct currency button is labeled as active (and styled as so) and then
+// re-calls all the necessary functions which will refresh the html to use the currency currency symbol/conversion rate
 function updateUI() {
   const buttons = [usdButton, cadButton, eurButton];
   for (let i = 0; i < buttons.length; i++)
@@ -598,7 +621,8 @@ function badCart(cart, categories, shoppingList)
             checker.push(0);
       }
 
-      // For each element in the cart object array, we add 1 to the index of checker that corresponds to the index of categories that contains the category of said cart element
+      // For each element in the cart object array, we add 1 to the index of checker that corresponds
+      // to the index of categories that contains the category of said cart element
       for (let i = 0; i < cart.length; i++)
       {
             for (let j = 0; j < categories.length; j++)
@@ -610,7 +634,8 @@ function badCart(cart, categories, shoppingList)
             }
       }
 
-      // Makes sure that the checker array that is generated off of what is in the cart array is the same as the shopping list array, as this would mean that the user correctly bought what they were asked to by the shopping list array
+      // Makes sure that the checker array that is generated off of what is in the cart array is the same as the
+      // shopping list array, as this would mean that the user correctly bought what they were asked to by the shopping list array
       for (let i = 0; i < shoppingList.length; i++)
       {
             if (checker[i] != shoppingList[i])
@@ -678,7 +703,8 @@ function checkout()
       }
 }
 
-// This function tells the user that the time is up, moves them to a different screen, and just in case disables all the other buttons so they can manually navigate to a new page in the event of an error
+// This function tells the user that the time is up, moves them to a different screen, and just in case
+// disables all the other buttons so they can manually navigate to a new page in the event of an error
 function endGame()
 {
       alert("Time is up!");
@@ -699,9 +725,8 @@ function endGame()
       let selector = document.querySelector("#category-selector");
       selector.disabled = true;
 }
-
-/* This is the function that is called as soon as the user enters the page. This function loads all the content within the "budgetSmart.html" 
-   page and runs the code below */
+// This is the function that is called as soon as the user enters the page. This function loads all
+// the content within the "budgetSmart.html" page and runs the code below 
 document.addEventListener("DOMContentLoaded", function ()
 {
       randomizePricesAndDesirability();
@@ -709,13 +734,13 @@ document.addEventListener("DOMContentLoaded", function ()
       updateUI();
       // As soon as the content is loaded, we set the budget and add whatever HTML we can with this
 
-      /* This HTML shows the cart as initially empty, and loads the checkout button as well as a 0 total price and 0 current desirability
-         &nbsp; = non-breaking space */
+      //This HTML shows the cart as initially empty, and loads the checkout button as well as a 0 total price current desirability
       cartBox.innerHTML = `
             <h2>Items in Cart</h2>
             <div class = "price-div"> <p><strong>Total Price:&nbsp;</strong> <span id = "total-price-symbol">` + getCurrencySymbol(selectedCurrency) + `</span> <span id="total-price"> ` + totalPrice + `</span></div> <span id="total-desirability"><strong>Total Desirability:&nbsp;</strong>` + totalDesirability.toFixed(1) + `</span> </p>
             <button id="checkout-button" onclick = "checkout()"> Checkout </button>
       `;
+      // &nbsp; = non-breaking space
 
       document.querySelector("#usd-button").classList.add("active");
 
