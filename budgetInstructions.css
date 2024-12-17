@@ -1,6 +1,6 @@
-/*styling for "budgetInstructions.html" */
+/* Styling for "budgetInstructions.html" */
 body {
-	/*gradient - between two different color hexes, both with shades of blue - color changing from top to bottom*/	
+	/* Gradient - between two different color hexes, both with shades of blue - color changing from top to bottom */	
 	background-image: linear-gradient(to bottom, #005bb5, #87CEFA);
 	font-family: 'rockwell', sans-serif;
 	text-align: center;
@@ -10,7 +10,7 @@ body {
 }
 
 .playGame {
-	/*cursor is a pointer & indicates a link - https://www.w3schools.com/cssref/pr_class_cursor.php*/	
+	/* Cursor is a pointer & indicates a link - https://www.w3schools.com/cssref/pr_class_cursor.php */	
 	cursor: pointer;
 	border: none;
 	border-radius: 10px;
@@ -18,9 +18,9 @@ body {
 	font-size: 20px;
 	font-family: 'Arial', sans-serif;
 	margin: 10px;
-	/*transition utilized when the user hovers over the buttons - transforms to 1.03% of its original size, and
+	/* Transition utilized when the user hovers over the buttons - transforms to 1.03% of its original size, and
 	a shadow appears - "ease" is used to ease into the transition; the effect has a slow start, then fast, then
-	ends slowly - https://www.w3schools.com/css/css3_transitions.asp*/	
+	ends slowly - https://www.w3schools.com/css/css3_transitions.asp */	
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
 	background-color: #FFD700;
 	color: #005bb5;
@@ -34,12 +34,12 @@ body {
 
 #preface {
 	color: #FFD700;
-	/*Dropping a text shadow w/ specified dimensions that is slightly transparent (0.6)*/		
+	/* Dropping a text shadow w/ specified dimensions that is slightly transparent (0.6) */		
 	text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 	font-size: 50px;
 	font-weight: bold;
 	margin-top: 30px;
-	/*underlines text*/
+	/* Underlines text */
 	text-decoration: underline;
 }
 
@@ -49,8 +49,8 @@ body {
 	padding: 20px;
 	margin: 30px auto;
 	width: 70%;
-	/*Dropping a shadow for each box displaying text w/ specified dimensions that is almost entirely 
-	transparent (0.2)*/		
+	/* Dropping a shadow for each box displaying text w/ specified dimensions that is almost entirely 
+	transparent (0.2) */		
 	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 	color: #005bb5;
 	text-align: left;
@@ -100,7 +100,7 @@ footer {
 	margin: 5px 0;
 }
 
-/*p is the first-child of its parent class, footer*/
+/* p is the first-child of its parent class, footer */
 footer p:first-child {
 	font-weight: bold;
 	font-size: 16px;
@@ -114,7 +114,7 @@ footer p:first-child {
 	}
 
 	#instruction-text, #controls-text {
-		/*width is defined as the percentage of the block in which it is contained in*/		
+		/* Width is defined as the percentage of the block in which it is contained in */		
 		width: 90%;
 		font-size: 16px;
 	}
