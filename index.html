@@ -1,18 +1,25 @@
+<!-- This is the landing page the user will be greeted with as soon as they enter the game. -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="style.css">
+		<!-- links the HTML page to the Javascript file that commands page navigation -->
 		<script src="script.js"></script>
 		<title>BudgetSmart</title>
 	</head>
 	
 	<body>
 		<h1 id="game-title">BudgetSmart</h1>
+		<!--a small logo for the game - from "pngtree.com"-->
 		<img id="icon" src="budgetIcon.png" alt="Budget Clipart">
 
+		<!-- The caption underneath the title -->
 		<p id="tagline">"Master the art of staying under budget!"</p>
 
+		<!-- Both of these buttons lead to the instructions page, as you need to know how to play the game
+		before you actually play it. The div class is a way of organizing these two buttons so that they can be
+		similarly styled, while each button is still given its own class to further stylize them. -->
 		<div class="actions">
 			<button class="instructions" onclick="goToNextPage('budgetInstructions.html')">How To Play</button>
 			<button class="session1" onclick="goToNextPage('budgetInstructions.html')">Play Game</button>
@@ -27,8 +34,10 @@
 			</ul>
 		</div>
 
+		<!--defines the text content for the page's footer at the bottom of the screen-->
 		<footer>
 			<div class="footer-content">
+				<!--&copy = the copyright symbol-->
 				<p>BudgetSmart &copy; 2024</p>
 				<p>Designed for CSP Final Project</p>
 			</div>
