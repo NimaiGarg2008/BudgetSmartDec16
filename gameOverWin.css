@@ -1,4 +1,6 @@
+/* Styling for two pages - "gameOver.html" and "gameWin.html */
 body {
+	/* Gradient - between two different color hexes, both with shades of blue - color changing from top to bottom */	
 	background-image: linear-gradient(to bottom, #005bb5, #87CEFA);
 	font-family: 'rockwell', sans-serif;
 	margin: 0;
@@ -14,7 +16,9 @@ body {
 }
 
 #game-title {
+	/* Gold-colored title */
 	color: #FFD700;
+	/* Dropping a text shadow w/ specified dimensions that is slightly transparent (0.6) */		
 	text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 	font-size: 60px;
 	font-weight: bold;
@@ -30,18 +34,25 @@ body {
 }
 
 .instructions {
+	/* Cursor on these buttons is a pointer & indicates a link
+	https://www.w3schools.com/cssref/pr_class_cursor.php */	
 	cursor: pointer;
 	border: none;
+	/* Gives the button rounded corners */	
 	border-radius: 10px;
 	padding: 12px 20px;
 	font-size: 20px;
 	font-family: 'Arial', sans-serif;
 	margin: 10px;
+	/* Transition utilized when the user hovers over the buttons - transforms to 1.03% of its original size, and
+	a shadow appears - "ease" is used to ease into the transition; the effect has a slow start, then fast, then
+	ends slowly https://www.w3schools.com/css/css3_transitions.asp */	
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
 	background-color: #FFD700;
 	color: #005bb5;
 }
 
+/* "hover" - pseudo-class; the style specified below is applied when the user hovers over the "Go To Home" button */
 .instructions:hover {
 	transform: scale(1.05);
 	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
