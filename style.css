@@ -1,4 +1,6 @@
+/* Styling for the main index.html page */
 body {
+	/* Gradient - between two different color hexes, both with shades of blue - color changing from top to bottom */
 	background-image: linear-gradient(to bottom, #005bb5, #87CEFA);
 	font-family: 'rockwell', sans-serif;
 	text-align: center;
@@ -7,7 +9,9 @@ body {
 }
 
 #game-title {
+	/* Gold-colored title */	
 	color: #FFD700;
+	/* Dropping a text shadow w/ specified dimensions that is slightly transparent (0.6) */		
 	text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 	font-size: 60px;
 	font-weight: bold;
@@ -15,6 +19,8 @@ body {
 }
 
 #icon {
+	/* Displays the image as a block element - starts on a new line, taking up whole width
+	https://www.w3schools.com/cssref/pr_class_display.php */
 	display: block;
 	margin: 15px auto;
 	width: 120px;
@@ -32,6 +38,8 @@ body {
 }
 
 .instructions, .session1 {
+	/* Cursor on these buttons is a pointer & indicates a link
+	https://www.w3schools.com/cssref/pr_class_cursor.php */
 	cursor: pointer;
 	border: none;
 	border-radius: 10px;
@@ -39,6 +47,9 @@ body {
 	font-size: 20px;
 	font-family: 'Arial', sans-serif;
 	margin: 10px;
+	/* Transition utilized when the user hovers over the buttons - transforms to 1.03% of its original size, and
+	a shadow appears - "ease" is used to ease into the transition; the effect has a slow start, then fast, then
+	ends slowly https://www.w3schools.com/css/css3_transitions.asp */
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -52,6 +63,8 @@ body {
 	color: #4682B4;
 }
 
+/* "hover" - pseudo-class; the style specified below is applied when the user hovers over the "Play Game" and
+"How To Play" buttons */
 .instructions:hover, .session1:hover {
 	transform: scale(1.05);
 	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -62,6 +75,7 @@ body {
 	border-radius: 12px;
 	padding: 20px;
 	margin: 30px auto;
+	/* Width is defined as the percentage of the block in which it is contained in */
 	width: 70%;
 	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 	color: #005bb5;
@@ -76,6 +90,7 @@ body {
 }
 
 .feature-list ul {
+	/* Removes the bullet points from the list */
 	list-style: none;
 	padding: 0;
 }
@@ -99,6 +114,7 @@ footer {
 	margin: 5px 0;
 }
 
+/* p is the first-child of its parent class, footer */
 footer p:first-child {
 	font-weight: bold;
 	font-size: 16px;
