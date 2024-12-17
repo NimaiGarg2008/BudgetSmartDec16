@@ -1,3 +1,4 @@
+/* Styling for "budgetSmart.html" */
 html {
     --primary: gold;
     --font: 'rockwell', sans-serif;
@@ -18,10 +19,19 @@ html {
     padding: 10px 20px;
     font-size: 14px;
     border: none;
+
+	/* Gives the button rounded corners */    
     border-radius: 5px;
+
     background-color: var(--primary);
     color: var(--white);
+
+	/* Cursor is a pointer & indicates a link/clickable object - https://www.w3schools.com/cssref/pr_class_cursor.php */    
     cursor: pointer;
+
+	/* Transition utilized when the user hovers over the buttons - transforms to 1.03% of its original size, and
+	a shadow appears - "ease" is used to ease into the transition; the effect has a slow start, then fast, then
+	ends slowly - https://www.w3schools.com/css/css3_transitions.asp */
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -45,8 +55,14 @@ body {
     background-size: 450px;
     padding: 20px;
     display: flex;
+
+    /* Specifies the direction of the flex items within the flex container - https://www.w3schools.com/css/css3_flexbox_container.asp */
     flex-direction: column;
+
+    /* Horizontally aligns the flex items in a certain way if they don't use up all availible space 
+    https://www.w3schools.com/css/css3_flexbox_container.asp */    
     justify-content: center;
+
     gap: 20px;
 }
 
@@ -61,6 +77,7 @@ body {
     border-radius: 3px;
 }
 
+/* "hover" - pseudo-class; the style specified below is applied when the user hovers over the "Remove" button */
 .remove-item:hover {
     background-color: darkred;
 }
@@ -102,7 +119,11 @@ body {
     background-color: var(--white);
     border: 2px solid var(--gray);
     border-radius: 10px;
+
+	/* Dropping a shadow for each box displaying text w/ specified dimensions that is almost entirely 
+	transparent (0.1) */	    
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
     position: relative;
     text-align: center;
     flex: 1; 
@@ -260,6 +281,8 @@ h2 {
     transform: scale(1.05);
 }
 
+/* "active" - pseudo-class; the style specified below is applied when the user activates (clicks on) any
+of the currency buttons and/or the speed buttons */
 .optionsBox button:active {
     transform: scale(1);
 }
