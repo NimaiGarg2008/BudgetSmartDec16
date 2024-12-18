@@ -3,5 +3,5 @@
    to go back and must navigate with buttons */
 function goToNextPage(nextPage)
 {
-            location.replace(nextPage);
+         location.replace(nextPage);
 }
