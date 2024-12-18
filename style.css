@@ -41,7 +41,7 @@ body {
 	margin: 20px 0;
 }
 
-.instructions, .session1 {
+.instructionsButton, .playButton {
 	/* Cursor on these buttons is a pointer & indicates a link/clickable object
 	https://www.w3schools.com/cssref/pr_class_cursor.php */
 	cursor: pointer;
@@ -59,19 +59,19 @@ body {
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.session1 {
+.playButton {
 	background-color: #FFD700;
 	color: #005bb5;
 }
 
-.instructions {
+.instructionsButton {
 	background-color: #F0FFFF;
 	color: #4682B4;
 }
 
 /* "hover" - pseudo-class; the style specified below is applied when the user hovers over the "Play Game" and
 "How To Play" buttons */
-.instructions:hover, .session1:hover {
+.instructionsButton:hover, .playButton:hover {
 	transform: scale(1.05);
 	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
