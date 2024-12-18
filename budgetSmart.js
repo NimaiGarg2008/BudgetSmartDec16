@@ -706,25 +706,25 @@ function checkout()
       // Secondly checks if the user bought the correct items using the above badCart function
       else if (badCart(cart, categories, shoppingList))
       {
-            alert("You did not properly buy what you were asked to buy!");
+            alert("You did not properly buy what you were asked to buy! Your mom is now dissatisfied.");
             location.replace('gameOver.html');
       }
       /* Finally, check to make sure the user has enough desirability. If they didn’t, they are told
          their desirability and what they were supposed to get */
       else if (targetDesirability.toFixed(1) > totalDesirability.toFixed(1))
       {
-            alert("You failed to meet your mom's desirability requirement! It was " + targetDesirability.toFixed(1) + 
+            alert("You failed to satisfy your mom. Her desirability requirement was! It was " + targetDesirability.toFixed(1) + 
 			" and you only had " +  totalDesirability.toFixed(1) + " desirability.");
             location.replace('gameOver.html');
       }
       // If none of the conditions are true, then the user has completed the game successfully.
       else
       {
-            alert("Congrats! You are within budget and have bought what you were instructed to buy.");
+            alert("Congrats! You are within budget and have bought what you were instructed to buy. Your mom is satisified");
 
             // Tells them how much they beat the target by (the more the better)
             alert("Your total desirability in the end was: " + totalDesirability.toFixed(1) + 
-			". For reference, the target desirability was " + targetDesirability.toFixed(1) + ".");
+			". For reference, your mom's desirability requirement was " + targetDesirability.toFixed(1) + ".");
             
             location.replace('gameWin.html');
 
