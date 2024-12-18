@@ -474,9 +474,9 @@ function updateCart()
       let totalPrice = 0;
       let desirability = 0;
 
-      /* For every element in the “cart” object array(which is an array of what the user has put in their cart/plans to buy),
-         we add the price of it (converted to whatever currency has been selected), and the desirability of it.
-         Finally, we update the html to include each item in the cart */
+      /* For every element in the “cart” object array (which is an array of what the user has put in their cart/plans to buy),
+         we add the price of it (converted to whatever currency has been selected), and the desirability of it. Finally, the
+	 HTML is updated to include each item in the cart */
       for (let i = 0; i < cart.length; i++)
       {
             let convertedPrice = (cart[i].price * currencyRates[selectedCurrency]).toFixed(2) * cart[i].quantity;
@@ -488,21 +488,32 @@ function updateCart()
 			"</span> </div> <button class='remove-item' onclick = 'removeItem(" + i + ")'> Remove </button> </p>";
       }
 
-      // Round the total price so it looks like a money value
+      // Round the total price so it looks like a currency value
       totalPrice = Number(totalPrice).toFixed(2);
 
-      // Enters the previous html with some extra stuff into the webpage
+      // Enters the previous HTML with the new Total Price and new Total Desirability value after adding an item.
 	cartBox.innerHTML = `
-		<h2>Items in Cart</h2>
-		` + cartList + `
-		<div class = "price-div">
-			<p><strong>Total Price:&nbsp;</strong></p> <span id = "total-price-symbol">` 
-			+ getCurrencySymbol(selectedCurrency) + `</span> <span id="total-price"> ` + totalPrice + 
-			`</span>
-   		</div>
-		<span id="total-desirability"><p><strong>Total Desirability:&nbsp;</strong></p>` + 
-		desirability.toFixed(1) + `</span> 
-		<button id="checkout-button" onclick = "checkout()"> Checkout </button>
+            <h2>Items in Cart</h2>
+            ` + cartList + `
+            <div class="price-div">
+                  <p>
+                        <strong>Total Price:&nbsp;</strong>
+                        <span id="total-price-symbol">
+                              ` + getCurrencySymbol(selectedCurrency) + `
+                        </span>
+
+                        <span id="total-price">
+                              ` + totalPrice + `
+                        </span>
+                  </p>
+            </div>
+
+            <span id="total-desirability">
+                  <strong>Total Desirability:&nbsp;</strong>
+                  ` + desirability.toFixed(1) + `
+            </span>
+            <br>
+            <button id="checkout-button" onclick="checkout()">Checkout</button>
       `;
 }
 
@@ -527,8 +538,8 @@ function renderStoreItems()
             <div class="store-item">
                   <div class="item-content">
                         <h3 class="item-name">` + item.name + `<span class="quantity-display"></span></h3>
-                        <p class="item-price" data-price="` + item.price + `">` + getCurrencySymbol(selectedCurrency) + 
-						(item.price*currencyRates[selectedCurrency]).toFixed(2) + `</p>
+                        <p class="item-price" data-price="` + item.price + `">` + getCurrencySymbol(selectedCurrency)
+                              + (item.price*currencyRates[selectedCurrency]).toFixed(2) + `</p>
                         <input type="number" class="item-amount" placeholder="Enter amount" min="1"></input>
                         <button onclick = "addToCart()" class="add-to-cart">Add to Cart</button>
                   </div>
@@ -539,13 +550,13 @@ function renderStoreItems()
       document.getElementById("item-desirability").textContent = "Desirability: "+ item.desirability.toFixed(1);
       document.getElementById("item-name").textContent = "Item: "+ item.name;
 
-      // Puts the generated html snippet into the webpage
+      // Puts the generated HTML snippet into the webpage
       storeItemsContainer.innerHTML = storeItemHTML;
 
       let amountInput = document.querySelector('.item-amount');
       let quantityDisplay = document.querySelector('.quantity-display');
       
-      // This event listener updates some of the html if an input is given (it shows how much you are about to buy)
+      // This event listener updates some of the HTML if an input is given (it shows how much you are about to buy)
       amountInput.addEventListener('input', function ()
       {
             let quantity = parseInt(amountInput.value);
@@ -606,7 +617,7 @@ function switchToCategory(name)
 }
 
 /* This function makes sure the correct currency button is labeled as active (and styled as so) and then
-   re-calls all the necessary functions which will refresh the html to use the currency currency symbol/conversion rate */
+   re-calls all the necessary functions which will refresh the HTML to use the currency currency symbol/conversion rate */
 function updateUI()
 {
       const buttons = [usdButton, cadButton, eurButton];
@@ -767,18 +778,25 @@ document.addEventListener("DOMContentLoaded", function ()
 	 total price current desirability */
       cartBox.innerHTML = `
             <h2>Items in Cart</h2>
-            <div class = "price-div">
-	    	<p>
-      			<strong>Total Price:&nbsp;</strong>
-    			<span id = "total-price-symbol">` + getCurrencySymbol(selectedCurrency) + `</span>
-	 	
-	 		<span id="total-price"> ` + totalPrice
-	      		+  `</span></div> <span id="total-desirability">
-	 		<strong>Total Desirability:&nbsp;</strong>`
-	      		+ totalDesirability.toFixed(1) + `
-	 		</span>
-   		</p>
-            <button id="checkout-button" onclick = "checkout()"> Checkout </button>
+            <div class="price-div">
+                  <p>
+                        <strong>Total Price:&nbsp;</strong>
+                        <span id="total-price-symbol">
+                              ` + getCurrencySymbol(selectedCurrency) + `
+                        </span>
+
+                        <span id="total-price">
+                              ` + totalPrice + `
+                        </span>
+                  </p>
+            </div>
+
+            <span id="total-desirability">
+                  <strong>Total Desirability:&nbsp;</strong>
+                  ` + totalDesirability.toFixed(1) + `
+            </span>
+            <br>
+            <button id="checkout-button" onclick="checkout()">Checkout</button>
       `;
 	
       // &nbsp; = non-breaking space
