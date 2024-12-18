@@ -90,21 +90,21 @@ let items = [
       { name: "Sunny Valley Grapes - Organic (1 lb)", displayName: "Sunny Valley Grapes - Organic", category: "Fruits", price: 5.00, desirability: 3 },
 
       // Grains
-      { name: "Nature's Choice Premium Oats (1 lb)", displayName: "Nature's Choice Premium Oats", category: "Grains", price: 2.45, desirability: 2.1},
-      { name: "Scarlet River Organic Barley (1 lb)", displayName: "Scarlet River Organic Barley", category: "Grains", price: 3.20, desirability: 3 },
+      { name: "Nature's Choice Premium Oats (1 lb)", displayName: "Nature's Choice Premium Oats", category: "Grains", price: 2.00, desirability: 2.1},
+      { name: "Scarlet River Organic Barley (1 lb)", displayName: "Scarlet River Organic Barley", category: "Grains", price: 3.00, desirability: 3 },
       { name: "Pure Harvest Brown Rice (2 lbs)", displayName: "Pure Harvest Brown Rice", category: "Grains", price: 3.50, desirability: 3.4 },
       { name: "Golden Valley Quinoa Seeds (1 lb)", displayName: "Golden Valley Quinoa Seeds", category: "Grains", price: 4.00, desirability: 3.8 },
 
       // Pasta
-      { name: "Harvest Wheat Fusilli Pasta (12 oz)", displayName: "Harvest Wheat Fusilli Pasta", category: "Pasta", price: 1.10, desirability: 1.5 },
-      { name: "Classic Italian Spaghetti (1 lb)", displayName: "Classic Italian Spaghetti", category: "Pasta", price: 1.30, desirability: 1.6 },
+      { name: "Harvest Wheat Fusilli Pasta (12 oz)", displayName: "Harvest Wheat Fusilli Pasta", category: "Pasta", price: 1.00, desirability: 1.5 },
+      { name: "Classic Italian Spaghetti (1 lb)", displayName: "Classic Italian Spaghetti", category: "Pasta", price: 1.20, desirability: 1.6 },
       { name: "Silver Oak Penne Pasta (1 lb)", displayName: "Silver Oak Penne Pasta", category: "Pasta", price: 1.50, desirability: 1.7 },
       { name: "Golden Harvest Couscous (1 lb)", displayName: "Golden Harvest Couscous", category: "Pasta", price: 2.25, desirability: 1.9 },
-      { name: "Italian Artisan Couscous (1 lb)", displayName: "Italian Artisan Couscous", category: "Pasta", price: 2.75, desirability: 2.2 },
+      { name: "Italian Artisan Couscous (1 lb)", displayName: "Italian Artisan Couscous", category: "Pasta", price: 3.00, desirability: 2.2 },
 
       // Beverages
-      { name: "Mountain Springs Bottled Water (1 liter)", displayName: "Mountain Springs Bottled Water", category: "Beverages", price: 1.35, desirability: 1.1 },
-      { name: "Golden Valley Sparkling Water (12 fl oz)", displayName: "Golden Valley Sparkling Water", category: "Beverages", price: 1.75, desirability: 1.2 },
+      { name: "Mountain Springs Bottled Water (1 liter)", displayName: "Mountain Springs Bottled Water", category: "Beverages", price: 1.25, desirability: 1.1 },
+      { name: "Golden Valley Sparkling Water (12 fl oz)", displayName: "Golden Valley Sparkling Water", category: "Beverages", price: 1.50, desirability: 1.2 },
       { name: "Silver Oak Iced Tea (1 liter)", displayName: "Silver Oak Iced Tea", category: "Beverages", price: 2.50, desirability: 1.4 },
       { name: "Green Meadows Apple Juice (64 oz)", displayName: "Green Meadows Apple Juice", category: "Beverages", price: 2.99, desirability: 1.5 },
       { name: "Tropical Breeze Lemonade (1 liter)", displayName: "Tropical Breeze Lemonade", category: "Beverages", price: 3.49, desirability: 1.8 },
