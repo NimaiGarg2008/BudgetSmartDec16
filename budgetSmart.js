@@ -19,7 +19,6 @@ let selectedCurrency = 'USD';
 let selectedSpeed = '1x';
 let remainingTime = 180;
 let speedFactor = 1;
-let totalDesirability = 0;
 let currencyRates = { USD: 1, CAD: 1.42, EUR: 0.95 };
 let timerInterval;
 
@@ -236,8 +235,6 @@ function startTimer()
 
 function generateShoppingList(array)
 {
-      totalDesirability = 0;
-      targetDesirability = 0;
       let category = "";
       shoppingList = [];
 
@@ -299,6 +296,9 @@ function genBudgetAndDesirability(array)
       let budgetMin = 0;
       let desMin = 0;
       let desMax = 0;
+
+      // Initializing the targetDesirability to be filled with
+      targetDesirability = 0;
 
       // Starts all the values with the first index of array, so we don’t skip the first item
       category = array[0].category;
@@ -688,7 +688,7 @@ function checkout()
       // Sets up some variables
       let budget = Number(budgetElement.textContent);
       let price = 0;
-      totalDesirability = 0;
+      let totalDesirability = 0;
 
       // Calculates the total price and desirability of the items in the cart
       for (let i = 0; i < cart.length; i++)
@@ -775,7 +775,7 @@ document.addEventListener("DOMContentLoaded", function ()
       updateUI();
 
       /* This HTML shows the cart as initially empty, and loads the checkout button as well as a 0 
-	 total price current desirability */
+	 total price current desirability. &nbsp; = non-breaking space */
       cartBox.innerHTML = `
             <h2>Items in Cart</h2>
             <div class="price-div">
@@ -793,13 +793,11 @@ document.addEventListener("DOMContentLoaded", function ()
 
             <span id="total-desirability">
                   <strong>Total Desirability:&nbsp;</strong>
-                  ` + totalDesirability.toFixed(1) + `
-            </span>
+                  0.0
+     	    </span>
             <br>
             <button id="checkout-button" onclick="checkout()">Checkout</button>
       `;
-	
-      // &nbsp; = non-breaking space
 
       document.querySelector("#usd-button").classList.add("active");
 
