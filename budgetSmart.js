@@ -492,14 +492,17 @@ function updateCart()
       totalPrice = Number(totalPrice).toFixed(2);
 
       // Enters the previous html with some extra stuff into the webpage
-      cartBox.innerHTML = `
-            <h2>Items in Cart</h2>
-            ` + cartList + `
-            <div class = "price-div"> <p><strong>Total Price:&nbsp;</strong> <span id = "total-price-symbol">` 
+	cartBox.innerHTML = `
+		<h2>Items in Cart</h2>
+		` + cartList + `
+		<div class = "price-div">
+			<p><strong>Total Price:&nbsp;</strong></p> <span id = "total-price-symbol">` 
 			+ getCurrencySymbol(selectedCurrency) + `</span> <span id="total-price"> ` + totalPrice + 
-			`</span></div> <span id="total-desirability"><strong>Total Desirability:&nbsp;</strong>` + 
-			desirability.toFixed(1) + `</span> </p>
-            <button id="checkout-button" onclick = "checkout()"> Checkout </button>
+			`</span>
+   		</div>
+		<span id="total-desirability"><p><strong>Total Desirability:&nbsp;</strong></p>` + 
+		desirability.toFixed(1) + `</span> 
+		<button id="checkout-button" onclick = "checkout()"> Checkout </button>
       `;
 }
 
