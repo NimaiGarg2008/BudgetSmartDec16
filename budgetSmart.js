@@ -181,7 +181,7 @@ function setSpeed(speed)
       selector.disabled = false;
 
       // Re-enables all input fields, buttons, and select fields
-      alert("You have chosen a speed of " + speed + ", meaning each second the timer will increment by " + speed + ". Click the OK button when you are ready.");
+      alert("You have chosen a speed of " + speed + ", meaning each second the timer will decrement by " + speed + ". Click the OK button when you are ready.");
       startTimer();
 
       /* Gives the user time to get ready, and when they are ready, they will close the alert field. After this, 
