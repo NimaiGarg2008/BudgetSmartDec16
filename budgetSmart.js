@@ -90,8 +90,8 @@ let items = [
       { name: "Sunny Valley Grapes - Organic (1 lb)", displayName: "Sunny Valley Grapes - Organic", category: "Fruits", price: 5.00, desirability: 3 },
 
       // Grains
-      { name: "Nature's Choice Premium Oats (1 lb)", displayName: "Nature's Choice Premium Oats", category: "Grains", price: 2.00, desirability: 2.1},
-      { name: "Scarlet River Organic Barley(1 lb)", displayName: "Scarlet River Organic Barley", category: "Grains", price: 3.00, desirability: 3 },
+      { name: "Nature's Choice Premium Oats (1 lb)", displayName: "Nature's Choice Premium Oats", category: "Grains", price: 2.75, desirability: 2.1},
+      { name: "Scarlet River Organic Barley(1 lb)", displayName: "Scarlet River Organic Barley", category: "Grains", price: 3.20, desirability: 3 },
       { name: "Pure Harvest Brown Rice (2 lbs)", displayName: "Pure Harvest Brown Rice", category: "Grains", price: 3.50, desirability: 3.4 },
       { name: "Golden Valley Quinoa Seeds (1 lb)", displayName: "Golden Valley Quinoa Seeds", category: "Grains", price: 4.00, desirability: 3.8 },
 
