@@ -1,435 +1,439 @@
 /* Styling for "budgetSmart.html" */
 html {
-	--primary: gold;
-	--font: 'rockwell', sans-serif;
-	--dark: #2E2E2E;
-	--gray: #C1C1C1;
-	--white: #F7F7F7;
-	--darkGray: #7A7A7A;
+    --primary: gold;
+    --font: 'rockwell', sans-serif;
+    --dark: #2E2E2E;
+    --gray: #C1C1C1;
+    --white: #F7F7F7;
+    --darkGray: #7A7A7A;
 }
 
 #game-over-text {
-	text-align: center;
-	font-size: 24px;
-	font-weight: bold;
-	color: red;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
 }
 
 .how-to-play {
-	padding: 10px 20px;
-	font-size: 14px;
-	border: none;
-	
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+
 	/* Gives the button rounded corners */    
-	border-radius: 5px;
-	
-	background-color: var(--primary);
-	color: var(--white);
-	
+    border-radius: 5px;
+
+    background-color: var(--primary);
+    color: var(--white);
+
 	/* Cursor is a pointer & indicates a link/clickable object - https://www.w3schools.com/cssref/pr_class_cursor.php */    
-	cursor: pointer;
-	
+    cursor: pointer;
+
 	/* Transition utilized when the user hovers over the buttons - transforms to 1.03% of its original size, and
 	a shadow appears - "ease" is used to ease into the transition; the effect has a slow start, then fast, then
 	ends slowly - https://www.w3schools.com/css/css3_transitions.asp */
-	transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .go-to-home {
-	padding: 10px 20px;
-	font-size: 14px;
-	border: none;
-	border-radius: 5px;
-	background-color: var(--primary);
-	color: var(--white);
-	cursor: pointer;
-	transition: background-color 0.3s ease, transform 0.2s ease;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary);
+    color: var(--white);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 body {
-	min-height: 100vh;
-	background: #0071ce;
-	font-family: var(--font);
-	background-repeat: no-repeat;
-	background-position: calc(100% + 150px) calc(100% + 50px);
-	background-size: 450px;
-	padding: 20px;
-	display: flex;
+    min-height: 100vh;
+    background: #0071ce;
+    font-family: var(--font);
+    background-repeat: no-repeat;
+    background-position: calc(100% + 150px) calc(100% + 50px);
+    background-size: 450px;
+    padding: 20px;
+    display: flex;
 
-	/* Specifies the direction of the flex items within the flex container - https://www.w3schools.com/css/css3_flexbox_container.asp */
-	flex-direction: column;
-	
-	/* Horizontally aligns the flex items in a certain way if they don't use up all availible space 
-	https://www.w3schools.com/css/css3_flexbox_container.asp */    
-	justify-content: center;
-	
-	gap: 20px;
+    /* Specifies the direction of the flex items within the flex container - https://www.w3schools.com/css/css3_flexbox_container.asp */
+    flex-direction: column;
+
+    /* Horizontally aligns the flex items in a certain way if they don't use up all availible space 
+    https://www.w3schools.com/css/css3_flexbox_container.asp */    
+    justify-content: center;
+
+    gap: 20px;
 }
 
 .remove-item {
-	background-color: red;
-	color: white;
-	border: none;
-	padding: 4px 9px;
-	margin-left: 10px;
-	margin-top: 8px;
-	cursor: pointer;
-	border-radius: 3px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 4px 9px;
+    margin-left: 10px;
+    margin-top: 8px;
+    cursor: pointer;
+    border-radius: 3px;
 }
 
 /* "hover" - pseudo-class; the style specified below is applied when the user hovers over the "Remove" button */
 .remove-item:hover {
-	background-color: darkred;
+    background-color: darkred;
 }
 
 .topPanel {
-	text-align: center;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 #checkout-button {
-	background-color: green;
-	color: white;
-	padding: 10px;
-	border: none;
-	cursor: pointer;
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
 }
 
 .gameOverButtonDiv {
-	text-align: center;
-	margin-top: 20px;
+    text-align: center;
+    margin-top: 20px;
 }
 
 .gameOverButton {
-	background-color: blue;
-	color: white;
-	padding: 10px 20px;
-	font-size: 16px;
-	border: none;
-	cursor: pointer;
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
 }
 
-.shoppingListBox, .storeBox{
-	padding: 10px;
-	margin-top: 20px;
-	background-color: var(--white);
-	border: 2px solid var(--gray);
-	border-radius: 10px;
-	
+.shoppingListBox,
+.storeBox{
+    padding: 10px;
+    margin-top: 20px;
+    background-color: var(--white);
+    border: 2px solid var(--gray);
+    border-radius: 10px;
+
 	/* Dropping a shadow for each box displaying text w/ specified dimensions that is almost entirely 
 	transparent (0.1) */	    
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	
-	position: relative;
-	text-align: center;
-	flex: 1; 
-	height: 390px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    position: relative;
+    text-align: center;
+    flex: 1; 
+    height: 390px; 
 }
 
 .itemsInCartBox
 {
-	padding: 10px;
-	margin-top: 20px;
-	background-color: var(--white);
-	border: 2px solid var(--gray);
-	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	flex: 1; 
-	height: 390px; 
+    padding: 10px;
+    margin-top: 20px;
+    background-color: var(--white);
+    border: 2px solid var(--gray);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1; 
+    height: 390px; 
 }
 
-.optionsBox, .otherBox, .desirabilityMeterBox{
-	padding: 10px;
-	margin-top: 20px;
-	background-color: var(--white);
-	border: 2px solid var(--gray);
-	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	position: relative;
-	text-align: center;
-	flex: 1; 
-	height: 200px; 
+.optionsBox,
+.otherBox,
+.desirabilityMeterBox{
+    padding: 10px;
+    margin-top: 20px;
+    background-color: var(--white);
+    border: 2px solid var(--gray);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    text-align: center;
+    flex: 1; 
+    height: 200px; 
 }
 
 .price-div {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .cart-item-price {
-	justify-content: flex-end;
+    justify-content: flex-end;
 }
 
 #total-desirability {
-	display: flex;
-	justify-content: flex-start;
+    display: flex;
+    justify-content: flex-start;
 }
 
-#total-price-symbol, #total-price, #total-desirability {
-	white-space: nowrap;
+#total-price-symbol,
+#total-price, #total-desirability {
+    white-space: nowrap;
 }
 
 #category-selector {
-	width: 100%;
-	text-align: center;
+    width: 100%;
+    text-align: center;
 }
 
 .shoppingListBox {
-	width: 200px;
+    width: 200px;
 }
 
 .itemsInCartBox {
-	width: 200px;
-	overflow: auto;
+    width: 200px;
+    overflow: auto;
 }
 
 .optionsBox {
-	width: 300px;
+    width: 300px;
 }
 
 .remainingListBox {
-	width: 50px;
-	height: 400px;
+    width: 50px;
+    height: 400px;
 }
 
 .topPanel {
-	text-align: center;
-	display: grid;
-	grid-template-columns: 1fr 2fr 1fr;
-	margin-bottom: 20px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    margin-bottom: 20px;
 }
 
 .second-row {
-	display: flex;
-	gap: 25px;
-	justify-content: center;
+    display: flex;
+    gap: 25px;
+    justify-content: center;
 }
 
 .main-content {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-	overflow: auto;
-	width: 100%;  
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: auto;
+    width: 100%;  
 }
 
 .row {
-	display: flex;
-	gap: 20px;
-	justify-content: center;
-	flex-wrap: wrap;
-	align-items: flex-start; 
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start; 
 }
 
 h1 {
-	margin: 0 10px;
+    margin: 0 10px;
 }
 
 h2 {
-	margin-top: 0;
+    margin-top: 0;
 }
 
 .optionsBox {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .option-row {
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .option-row p {
-	margin: 0;
-	font-weight: bold;
-	padding: 2px;
-	font-size: 16px;
-	color: var(--dark);
-	flex: 0;
-	margin-right: 10px;
+    margin: 0;
+    font-weight: bold;
+    padding: 2px;
+    font-size: 16px;
+    color: var(--dark);
+    flex: 0;
+    margin-right: 10px;
 }
 
 .button-row {
-	display: flex;
-	gap: 10px;
-	justify-content: flex-start;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
 }
 
 .optionsBox button {
-	padding: 8px 16px;
-	font-size: 14px;
-	border: 1px solid var(--gray);
-	border-radius: 5px;
-	background-color: var(--white);
-	color: var(--dark);
-	cursor: pointer;
-	transition: background-color 0.3s ease, transform 0.2s ease;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    background-color: var(--white);
+    color: var(--dark);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .optionsBox button:hover {
-	background-color: var(--gray);
-	transform: scale(1.05);
+    background-color: var(--gray);
+    transform: scale(1.05);
 }
 
 /* "active" - pseudo-class; the style specified below is applied when the user activates (clicks on) any
 of the currency buttons and/or the speed buttons */
 .optionsBox button:active {
-	transform: scale(1);
+    transform: scale(1);
 }
 
 .optionsBox button.selected {
-	background-color: var(--primary);
-	color: white;
+    background-color: var(--primary);
+    color: white;
 }
 
 .itemsInCartBox p {
-	display: flex;
+    display: flex;
 }
 
 .item-price {
-	color: var(--primary);
+    color: var(--primary);
 }
 
 
 .store-items-container {
-	display: flex;
-	gap: 20px;
-	flex-wrap: nowrap;
-	justify-content: center;
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+    justify-content: center;
 }
 
 .store-item {
-	flex: 0 0 200px;
-	text-align: center;
-	padding: 10px;
-	border: 1px solid var(--gray);
-	border-radius: 10px;
+    flex: 0 0 200px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid var(--gray);
+    border-radius: 10px;
 }
 
 .item-content {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	text-align: center;
-	width: 225px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    width: 225px;
 }
 
 .item-name {
-	font-weight: bold;
-	font-size: 18px;
-	text-align: center;
-	color: #FF5733;
-	display: block;
-	margin: 20px 0;
-	align-items: center;
-	font-size: 16px;
-	line-height: 1.5;
-	max-height: 3em; 
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    color: #FF5733;
+    display: block;
+    margin: 20px 0;
+    align-items: center;
+    font-size: 16px;
+    line-height: 1.5;
+    max-height: 3em; 
 }
 
 .item-price {
-	font-size: 16px;
-	color: var(--primary);
+    font-size: 16px;
+    color: var(--primary);
 }
 
 .item-amount {
-	padding: 8px;
-	font-size: 14px;
-	border: 1px solid var(--gray);
-	border-radius: 5px;
-	width: auto;
-	text-align: center;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    width: auto;
+    text-align: center;
 }
 
 .add-to-cart {
-	padding: 10px 20px;
-	font-size: 14px;
-	border: none;
-	border-radius: 5px;
-	background-color: var(--primary);
-	color: var(--white);
-	cursor: pointer;
-	transition: background-color 0.3s ease, transform 0.2s ease;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary);
+    color: var(--white);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .add-to-cart:hover {
-	background-color: var(--dark);
-	transform: scale(1.05);
+    background-color: var(--dark);
+    transform: scale(1.05);
 }
 
 .add-to-cart:active {
-	transform: scale(1);
+    transform: scale(1);
 }
 
 .see-price {
-	padding: 8px 16px;
-	font-size: 14px;
-	border: none;
-	border-radius: 5px;
-	background-color: var(--primary);
-	color: var(--white);
-	cursor: pointer;
-	transition: background-color 0.3s ease, transform 0.2s ease;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary);
+    color: var(--white);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .see-price:hover {
-	background-color: var(--dark);
-	transform: scale(1.05);
+    background-color: var(--dark);
+    transform: scale(1.05);
 }
 
 .see-price:active {
-	transform: scale(1);
+    transform: scale(1);
 }
 
 .final-price {
-	font-weight: bold;
-	font-size: 16px;
-	color: var(--primary);
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--primary);
 }
 
 .navigation-buttons {
-	position: absolute;
-	top: 50%;
-	left: 5px;
-	right: 5px;
-	display: flex;
-	justify-content: space-between;
-	width: calc(100% - 10px);
-	transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    right: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 10px);
+    transform: translateY(-50%);
 }
 
 .nav-button {
-	background-color: var(--primary);
-	color: var(--white);
-	border: none;
-	padding: 10px 15px;
-	font-size: 18px;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: background-color 0.3s ease, transform 0.2s ease;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .nav-button:hover {
-	background-color: var(--dark);
-	transform: scale(1.1);
+    background-color: var(--dark);
+    transform: scale(1.1);
 }
 
 .nav-button:focus {
-	outline: none;
+    outline: none;
 }
 
 #timer, #budget, #final-price-amount {
-	font-weight: normal;
+    font-weight: normal;
 }
 
 #budget-title, #budgetsmart-title, #timer-title {
-	color: gold;
+    color: gold;
 }
 
 button.active {
