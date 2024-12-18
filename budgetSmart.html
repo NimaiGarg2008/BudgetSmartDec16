@@ -6,121 +6,128 @@
 		<title>BudgetSmart</title>
 	</head>
 
-	<body>
-		<div class="topPanel">
-		<h1 id="budget-title">
-		<!-- Displays the randomized budget in the top left corner -->
-		Budget: <span id="budget-currency-symbol"></span><span id="budget"></span>
-		</h1>
-		<!-- Main game title -->            
-		<h1 id="budgetsmart-title">BudgetSmart</h1>
-		<!-- Displays the start time, that being 3 minutes - "budgetSmart.js" dictates how and when this timer starts decrementing
-		seconds. -->            
-		<h1 id="timer-title">Timer: <span id="timer">3:00</span></h1>
-		</div>
+    <body>
+        <div class="topPanel">
+            <h1 id="budget-title">
+                <!-- Displays the randomized budget in the top left corner -->
+                Budget: <span id="budget-currency-symbol"></span><span id="budget"></span>
+            </h1>
+            <!-- Main game title -->            
+            <h1 id="budgetsmart-title">BudgetSmart</h1>
+            <!-- Displays the start time, that being 3 minutes - "budgetSmart.js" dictates how and when this timer starts decrementing
+            seconds. -->            
+            <h1 id="timer-title">Timer: <span id="timer">3:00</span></h1>
+        </div>
 
-		<div class="main-content">
-			<div class="row">
-                		<div class="shoppingListBox">
-					<br>
-					<h2>Shopping List</h2>
-					<div id="shopping-list-content"></div>
-					<p id="shoppingList"></p>
-                		</div> 
-				<div class="storeBox">
-					<br>
-		                    	<!-- Displays the center container in which each shopping item will be stored -->                                
-		                    	<h2>Store Items</h2>
-		                    	<div id="storeItems"></div>
-		                    	<div class="store-items-container" id="store-items-container"></div>
-		                    	<!-- Buttons which go left and right - a way to look at each shopping item one by one -->                             
-		                    	<div class="navigation-buttons">
-						<button class="nav-button left" onclick="leftButton()">←</button>
-						<button class="nav-button right" onclick="rightButton()">→</button>
-		                    	</div>
-			    		<br>
-		
-		                  	<!-- Displays the dropdown menu within the center container - lets the user search the shop by item category, and gives them
-		                    	a list of categories to toggle through -->  
-		                  	<!-- "onchange" - event; occurs when an HTML value is changed - in this case, it calls the "switchToCategory" function in
-		                    	budgetSmart.js when the user selects a different category. -->                        
-					<select id="category-selector" onchange="switchToCategory(this)">
-						<option value="Dairy"> Dairy </option>
-						<option value="Meats"> Meats </option>
-						<option value="Vegetables"> Vegetables </option>
-						<option value="Fruits"> Fruits </option>
-						<option value="Grains"> Grains </option>
-						<option value="Pasta"> Pasta </option>
-						<option value="Beverages"> Beverages </option>
-					</select>
-				</div>
-				<!-- Displays the top rightmost container, which lets the user see the items they have put into their cart. -->                  
-				<div class="itemsInCartBox">
-					<br>
-					<h2>Items in Cart</h2>
-					<!-- When the user loads into this page, the only message they see within this chunk below the "Items In Cart" header
-					is a message telling them to start adding items to their cart. -->
-					<p>
-						<center>
-							<span class="item-name">Add something to your cart!</span>
-						</center>
-					</p>
-				</div>
-			</div>
+        <div class="main-content">
+            <div class="row">
+                <div class="shoppingListBox">
+                    <br>
+                    <h2>Shopping List</h2>
+                    <div id="shopping-list-content"></div>
+                    <p id="shoppingList"></p>
+                </div>
+                
+                <div class="storeBox">
+                    <br>
 
-			<!-- Displays the buttons in the bottom row of the screen -->
-			<div class="second-row">
-				<div class="optionsBox">
-					<br>
-					<h2>Options</h2>
-					<div class="option-row">
-						<p>Amount</p>
-						<!-- Displays the buttons in the bottom left container of the screen - the buttons that allow the user to toggle between
-						the currency they want to use. -->                        
-						<div class="button-row-currency">
-							<button id="usd-button" onclick="convertCurrency('USD')">USD</button>
-							<button id="cad-button" onclick="convertCurrency('CAD')">CAD</button>
-							<button id="eur-button" onclick="convertCurrency('EUR')">EUR</button>
-						</div>			  
-					</div>
-					<div class="option-row">
-						<p>Speed</p>
-						<!-- Displays the buttons in the bottom left container of the screen - the buttons that allow the user to select the 
-						speed at which the timer decrements. -->                              
-						<div class="button-row-speed">
-							<button id="speed-1x" onclick="setSpeed('1x')">1x</button>
-							<button id="speed-2x" onclick="setSpeed('2x')">2x</button>
-							<button id="speed-3x" onclick="setSpeed('3x')">3x</button>
-						</div>
-					</div>
-				</div>
-				<!-- Displays the center container in the bottom row - the "Desirability" meter, allowing the user to see the desirability
-				of each item they toggle through as they appear in the "Store Items" container -->  
-				<div class="desirabilityMeterBox">
-					<br>
-					<h2>Desirability</h2>
-					<div id="desirability-box">
-						<p id="item-name"></p>
-						<p id="item-desirability"></p>
-					</div>
-	                	</div>
-		                <!-- Displays the right container in the bottom row - the two buttons that allow the user to either go to the Instructions page,
-		                or go back to the landing page. --> 
-		                <div class="otherBox">
-					<br>
-					<h2>Other</h2>
-					<div class="other-buttons">
-						<!-- If the user chooses to go to the Instructions page from here, a Javascript function is called which opens
-						the Instructions page in a new tab. -->   
-						<button class="how-to-play" onclick="openNewTab()">How to Play</button>
-						<!-- The same doesn't apply for the "Go Back To Home" button - the user will be sent back to the landing page on the same 
-						tab when this button is clicked.-->
-						<button class="go-to-home" onclick="goToNextPage('index.html')">Go back to Home</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Links this HTML page to "budgetSmart.js", the JavaScript file which codes for the functionality of everything on this one page. -->        
-		<script src="budgetSmart.js"></script>
-	</body>
+                    <!-- Displays the center container in which each shopping item will be stored -->                                
+                    <h2>Store Items</h2>
+                    <div id="storeItems"></div>
+                    <div class="store-items-container" id="store-items-container"></div>
+                    <!-- Buttons which go left and right - a way to look at each shopping item one by one -->                             
+                    <div class="navigation-buttons">
+                        <button class="nav-button left" onclick="leftButton()">←</button>
+                        <button class="nav-button right" onclick="rightButton()">→</button>
+                    </div>
+		            <br>
+
+                  <!-- Displays the dropdown menu within the center container - lets the user search the shop by item category, and gives them
+                    a list of categories to toggle through -->  
+                  <!-- "onchange" - event; occurs when an HTML value is changed - in this case, it calls the "switchToCategory" function in
+                    budgetSmart.js when the user selects a different category. -->                        
+                  <select id="category-selector" onchange="switchToCategory(this)">
+                    <option value="Dairy"> Dairy </option>
+                    <option value="Meats"> Meats </option>
+                    <option value="Vegetables"> Vegetables </option>
+                    <option value="Fruits"> Fruits </option>
+                    <option value="Grains"> Grains </option>
+                    <option value="Pasta"> Pasta </option>
+                    <option value="Beverages"> Beverages </option>
+                  </select>
+                  
+                </div>
+                <!-- Displays the top rightmost container, which lets the user see the items they have put into their cart. -->                  
+                <div class="itemsInCartBox">
+                    <br>
+                    <h2>Items in Cart</h2>
+                    <!-- When the user loads into this page, the only message they see within this chunk below the "Items In Cart" header
+                    is a message telling them to start adding items to their cart. -->
+                    <p>
+                        <center>
+                            <span class="item-name">Add something to your cart!</span>
+                        </center>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Displays the buttons in the bottom row of the screen -->
+            <div class="second-row">
+                <div class="optionsBox">
+                    <br>
+                    <h2>Options</h2>
+                    <div class="option-row">
+                        <p>Amount</p>
+                        <!-- Displays the buttons in the bottom left container of the screen - the buttons that allow the user to toggle between
+                        the currency they want to use. -->                        
+                        <div class="button-row-currency">
+                            <button id="usd-button" onclick="convertCurrency('USD')">USD</button>
+                            <button id="cad-button" onclick="convertCurrency('CAD')">CAD</button>
+                            <button id="eur-button" onclick="convertCurrency('EUR')">EUR</button>
+                        </div>			  
+                    </div>
+                    <div class="option-row">
+                        <p>Speed</p>
+                        <!-- Displays the buttons in the bottom left container of the screen - the buttons that allow the user to select the 
+                        speed at which the timer decrements. -->                              
+                        <div class="button-row-speed">
+                            <button id="speed-1x" onclick="setSpeed('1x')">1x</button>
+                            <button id="speed-2x" onclick="setSpeed('2x')">2x</button>
+                            <button id="speed-3x" onclick="setSpeed('3x')">3x</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Displays the center container in the bottom row - the "Desirability" meter, allowing the user to see the desirability
+                of each item they toggle through as they appear in the "Store Items" container -->  
+                <div class="desirabilityMeterBox">
+                    <br>
+                    <h2>Desirability</h2>
+                    <div id="desirability-box">
+                        <p id="item-name"></p>
+                        <p id="item-desirability"></p>
+                    </div>
+                </div>
+
+                <!-- Displays the right container in the bottom row - the two buttons that allow the user to either go to the Instructions page,
+                or go back to the landing page. --> 
+                <div class="otherBox">
+                    <br>
+                    <h2>Other</h2>
+                    <div class="other-buttons">
+                        <!-- If the user chooses to go to the Instructions page from here, a Javascript function is called which opens
+                        the Instructions page in a new tab. -->   
+                        <button class="how-to-play"                           
+                                onclick="openNewTab()">How to Play</button>
+                        <!-- The same doesn't apply for the "Go Back To Home" button - the user will be sent back to the landing page on the same 
+                        tab when this button is clicked.-->
+                        <button class="go-to-home" onclick="goToNextPage('index.html')">Go back to Home</button>
+                    </div>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <!-- Links this HTML page to "budgetSmart.js", the JavaScript file which codes for the functionality of everything on this one page. -->        
+        <script src="budgetSmart.js"></script>
+    </body>
 </html>
